@@ -1,7 +1,6 @@
 bangnation.net
 ==============
 
-no-reply@bangnation.net    email address
 Mailbox Login: no-reply@bangnation.net (use the whole thing!)
 Password: ^eTur2sA
 
