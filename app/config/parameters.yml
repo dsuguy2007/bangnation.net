@@ -1,15 +1,15 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     localhost
+    database_host:     mysql.bangnation.net
     database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_name:     bangnation_db
+    database_user:     bangnation_user
+    database_password: s0m3r3d@shoe
 
     mailer_transport:  smtp
-    mailer_host:       localhost
-    mailer_user:       ~
-    mailer_password:   ~
+    mailer_host:       mail.bangnation.net
+    mailer_user:       no-reply@bangnation.net
+    mailer_password:   ^eTur2sA
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
