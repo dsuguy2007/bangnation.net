@@ -6,10 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class WelcomeController extends Controller
+class PrivacyController extends Controller
 {    
     /**
-     * @Route("/", name="welcome")
+     * @Route("/privacy", name="privacy")
      * @Template()
      */
     public function indexAction() {        

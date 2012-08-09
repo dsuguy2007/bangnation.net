@@ -6,11 +6,17 @@
         <i class="icon-user"></i>
         Login
     </a><br>
-    <a href="{{ path('fos_user_security_logout') }}">Logout</a><br>
-    <a href="{{ path('fos_user_profile_show') }}">View Profile</a><br>
-    <a href="{{ path('fos_user_profile_edit') }}">Edit Profile</a><br>
-    <a href="{{ path('fos_user_registration_register') }}">Register</a><br>
-    <a href="{{ path('fos_user_resetting_request') }}">Reset Password</a><br>
-    <a href="{{ path('fos_user_change_password') }}">Change Password</a><br>
+    <a class="btn" href="{{ path('fos_user_security_logout') }}">Logout</a><br>
+    <a class="btn" href="{{ path('fos_user_profile_show') }}">
+        <i class="icon-eye-open"></i>
+        View Profile
+    </a><br>
+    <a class="btn" href="{{ path('fos_user_profile_edit') }}">
+        <i class="icon-edit"></i>
+        Edit Profile
+    </a><br>
+    <a class="btn" href="{{ path('fos_user_registration_register') }}">Register</a><br>
+    <a class="btn" href="{{ path('fos_user_resetting_request') }}">Reset Password</a><br>
+    <a class="btn" href="{{ path('fos_user_change_password') }}">Change Password</a><br>
 </div>
 {% endblock %}

@@ -6,6 +6,26 @@ _welcome:
     resource: "@BangnationCommonBundle/Controller/WelcomeController.php"
     type:     annotation
     prefix:   /
+    
+about:
+    resource: "@BangnationCommonBundle/Controller/AboutController.php"
+    type:     annotation
+    prefix:   /
+    
+contact:
+    resource: "@BangnationCommonBundle/Controller/ContactController.php"
+    type:     annotation
+    prefix:   /
+    
+privacy:
+    resource: "@BangnationCommonBundle/Controller/PrivacyController.php"
+    type:     annotation
+    prefix:   /
+    
+terms:
+    resource: "@BangnationCommonBundle/Controller/TermsController.php"
+    type:     annotation
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
