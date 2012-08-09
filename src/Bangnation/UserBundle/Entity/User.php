@@ -18,7 +18,7 @@ class User extends BaseUser
     protected $id;
     
     /**
-     * @ORM\Column(type="birthday")
+     * @ORM\Column(type="datetime")
      */
     protected $birthDate;
 
@@ -41,10 +41,10 @@ class User extends BaseUser
     /**
      * Set birthDate
      *
-     * @param birthday $birthDate
+     * @param datetime $birthDate
      * @return User
      */
-    public function setBirthDate(\birthday $birthDate)
+    public function setBirthDate(\DateTime $birthDate)
     {
         $this->birthDate = $birthDate;
     
@@ -54,7 +54,7 @@ class User extends BaseUser
     /**
      * Get birthDate
      *
-     * @return birthday 
+     * @return datetime 
      */
     public function getBirthDate()
     {
