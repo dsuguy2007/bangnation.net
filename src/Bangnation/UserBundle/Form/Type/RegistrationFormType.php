@@ -13,7 +13,9 @@ class RegistrationFormType extends BaseType
 
         // add your custom field
         $builder
-            ->add('birthDate')
+            ->add('birthDate', 'birthday', array(
+                'widget' => 'choice',
+            ))
         ; 
     }
 
