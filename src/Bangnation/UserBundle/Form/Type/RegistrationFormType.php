@@ -1,6 +1,6 @@
 <?php
 
-namespace Combo\UserBundle\Form\Type;
+namespace Bangnation\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
@@ -19,6 +19,6 @@ class RegistrationFormType extends BaseType
 
     public function getName()
     {
-        return 'combo_user_registration';
+        return 'bangnation_user_registration';
     }
 }

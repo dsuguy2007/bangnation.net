@@ -79,6 +79,8 @@ fos_user:
     user_class: Bangnation\UserBundle\Entity\User
 
     registration:
+        form:
+            type: bangnation_user_registration
         confirmation:
             enabled: true
             
@@ -91,3 +93,10 @@ mopa_bootstrap:
         show_legend: true
         show_child_legend: true
         error_type: inline # or block
+        
+services:
+    bangnation_user.registration.form.type:
+        class: Bangnation\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: bangnation_user_registration }
