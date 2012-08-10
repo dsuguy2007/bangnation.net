@@ -21,5 +21,14 @@
 {% block headline %}Test page{% endblock headline %}
 
 {% block footer %}
+<p>
+    <a href="{{ path('contact') }}">Contact Us</a>
+    |
+    <a href="{{ path('about') }}">About Us</a>
+    |
+    <a href="{{ path('terms') }}">Terms of Use/Community Guidelines</a>
+    |
+    <a href="{{ path('privacy') }}">Privacy Policy</a>
+</p>
 <p>&copy; Bang Nation {{ '' | date('Y') }}</p>
 {% endblock footer %}
