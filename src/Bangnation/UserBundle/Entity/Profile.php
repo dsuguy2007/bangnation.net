@@ -25,7 +25,7 @@ class Profile
     /**
      * @var string $bodyHair
      *
-     * @ORM\Column(name="bodyHair", type="string", length=255)
+     * @ORM\Column(name="body_hair", type="string", length=255)
      */
     private $bodyHair;
 
@@ -47,7 +47,7 @@ class Profile
     /**
      * @var string $hivStatus
      *
-     * @ORM\Column(name="hivStatus", type="string", length=255)
+     * @ORM\Column(name="hiv_status", type="string", length=255)
      * @Assert\Choice(choices = {"pos", "neg", "don't care", "unknown", null}, message = "Choose a valid HIV status.")
      */
     private $hivStatus;
@@ -55,14 +55,14 @@ class Profile
     /**
      * @var string $smokingStatus
      *
-     * @ORM\Column(name="smokingStatus", type="string", length=255)
+     * @ORM\Column(name="smoking_status", type="string", length=255)
      */
     private $smokingStatus;
 
     /**
      * @var string $whereMeet
      *
-     * @ORM\Column(name="whereMeet", type="string", length=255)
+     * @ORM\Column(name="where_meet", type="string", length=255)
      * @Assert\Choice(choices = {"my place", "public", "your place", "hotel", null}, message = "Choose a valid meeting place.")
      */
     private $whereMeet;
@@ -70,7 +70,7 @@ class Profile
     /**
      * @var string $whenMeet
      *
-     * @ORM\Column(name="whenMeet", type="string", length=255)
+     * @ORM\Column(name="when_meet", type="string", length=255)
      * @Assert\Choice(choices = {"right now", "weekend, let's plan it.", "after work", null}, message = "Choose a valid meeting time.")
      */
     private $whenMeet;
@@ -78,7 +78,7 @@ class Profile
     /**
      * @var string $lookingFor
      *
-     * @ORM\Column(name="lookingFor", type="string", length=255)
+     * @ORM\Column(name="looking_for", type="string", length=255)
      * @Assert\Choice(choices = {"friendship", "relationship", "1-on-1 sex", "3some/group sex", null})
      */
     private $lookingFor;
@@ -122,7 +122,7 @@ class Profile
     /**
      * @var float $cockSize
      *
-     * @ORM\Column(name="cockSize", type="float")
+     * @ORM\Column(name="cock_size", type="float")
      */
     private $cockSize;
 

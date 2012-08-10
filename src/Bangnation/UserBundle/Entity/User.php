@@ -18,7 +18,7 @@ class User extends BaseUser
     protected $id;
     
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="birth_date", type="datetime")
      */
     protected $birthDate;
 
