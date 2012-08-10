@@ -23,6 +23,71 @@ class Profile
     private $id;
 
     /**
+     * Is this a Pro ad? If so then mark it as Pro ad (escort, masseur, etc.) with extra options like rates, availability
+     * 
+     * @var string $proAd
+     *
+     * @ORM\Column(name="pro_ad", type="boolean")
+     */
+    private $proAd;
+
+    /**
+     * @var string $heading
+     *
+     * @ORM\Column(name="heading", type="string", length=255)
+     */
+    private $heading;
+    
+    /**
+     * @var string $body
+     *
+     * @ORM\Column(name="body", type="text")
+     */
+    private $body;
+    
+    /**
+     * @var string $height
+     *
+     * @ORM\Column(name="height", type="float")
+     */
+    private $height;
+    
+    /**
+     * @var string $weight
+     *
+     * @ORM\Column(name="weight", type="float")
+     */
+    private $weight;
+    
+    /**
+     * @var string $waistSize
+     *
+     * @ORM\Column(name="waistSize", type="integer")
+     */
+    private $waistSize;
+    
+    /**
+     * @var string $hairColor
+     *
+     * @ORM\Column(name="hairColor", type="string", length=255)
+     */
+    private $hairColor;
+    
+    /**
+     * @var string $eyeColor
+     *
+     * @ORM\Column(name="eyeColor", type="string", length=255)
+     */
+    private $eyeColor;
+    
+    /**
+     * @var string $bodyType
+     *
+     * @ORM\Column(name="bodyType", type="string", length=255)
+     */
+    private $bodyType;
+    
+    /**
      * @var string $bodyHair
      *
      * @ORM\Column(name="body_hair", type="string", length=255)
@@ -142,6 +207,213 @@ class Profile
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set proAd
+     *
+     * @param boolean $proAd
+     * @return Profile
+     */
+    public function setProAd($proAd)
+    {
+        $this->proAd = $proAd;
+    
+        return $this;
+    }
+
+    /**
+     * Get proAd
+     *
+     * @return boolean 
+     */
+    public function getProAd()
+    {
+        return $this->proAd;
+    }
+
+    /**
+     * Set heading
+     *
+     * @param string $heading
+     * @return Profile
+     */
+    public function setHeading($heading)
+    {
+        $this->heading = $heading;
+    
+        return $this;
+    }
+
+    /**
+     * Get heading
+     *
+     * @return string 
+     */
+    public function getHeading()
+    {
+        return $this->heading;
+    }
+
+    /**
+     * Set body
+     *
+     * @param string $body
+     * @return Profile
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+    
+        return $this;
+    }
+
+    /**
+     * Get body
+     *
+     * @return string 
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Set height
+     *
+     * @param float $height
+     * @return Profile
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+    
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return float 
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param float $weight
+     * @return Profile
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+    
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return float 
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * Set waistSize
+     *
+     * @param integer $waistSize
+     * @return Profile
+     */
+    public function setWaistSize($waistSize)
+    {
+        $this->waistSize = $waistSize;
+    
+        return $this;
+    }
+
+    /**
+     * Get waistSize
+     *
+     * @return integer 
+     */
+    public function getWaistSize()
+    {
+        return $this->waistSize;
+    }
+
+    /**
+     * Set hairColor
+     *
+     * @param string $hairColor
+     * @return Profile
+     */
+    public function setHairColor($hairColor)
+    {
+        $this->hairColor = $hairColor;
+    
+        return $this;
+    }
+
+    /**
+     * Get hairColor
+     *
+     * @return string 
+     */
+    public function getHairColor()
+    {
+        return $this->hairColor;
+    }
+
+    /**
+     * Set eyeColor
+     *
+     * @param string $eyeColor
+     * @return Profile
+     */
+    public function setEyeColor($eyeColor)
+    {
+        $this->eyeColor = $eyeColor;
+    
+        return $this;
+    }
+
+    /**
+     * Get eyeColor
+     *
+     * @return string 
+     */
+    public function getEyeColor()
+    {
+        return $this->eyeColor;
+    }
+
+    /**
+     * Set bodyType
+     *
+     * @param string $bodyType
+     * @return Profile
+     */
+    public function setBodyType($bodyType)
+    {
+        $this->bodyType = $bodyType;
+    
+        return $this;
+    }
+
+    /**
+     * Get bodyType
+     *
+     * @return string 
+     */
+    public function getBodyType()
+    {
+        return $this->bodyType;
     }
 
     /**
