@@ -5,7 +5,7 @@
     <form action="{{ path('welcome') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
 
-        <input type="submit" />
+        <input class="btn btn-primary" type="submit" />
     </form>
         
     <a class="btn" href="{{ path('fos_user_security_login') }}">
