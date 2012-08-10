@@ -3,6 +3,7 @@
 namespace Bangnation\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Bangnation\UserBundle\Entity\Profile
@@ -32,6 +33,7 @@ class Profile
      * @var string $position
      *
      * @ORM\Column(name="position", type="string", length=255)
+     * @Assert\Choice(choices = {"top", "bottom", "versatile", "versatile/top", "versatile/bottom", null}, message = "Choose a valid position.")
      */
     private $position;
 
@@ -46,6 +48,7 @@ class Profile
      * @var string $hivStatus
      *
      * @ORM\Column(name="hivStatus", type="string", length=255)
+     * @Assert\Choice(choices = {"pos", "neg", "don't care", "unknown", null}, message = "Choose a valid HIV status.")
      */
     private $hivStatus;
 
@@ -60,6 +63,7 @@ class Profile
      * @var string $whereMeet
      *
      * @ORM\Column(name="whereMeet", type="string", length=255)
+     * @Assert\Choice(choices = {"my place", "public", "your place", "hotel", null}, message = "Choose a valid meeting place.")
      */
     private $whereMeet;
 
@@ -67,6 +71,7 @@ class Profile
      * @var string $whenMeet
      *
      * @ORM\Column(name="whenMeet", type="string", length=255)
+     * @Assert\Choice(choices = {"right now", "weekend, let's plan it.", "after work", null}, message = "Choose a valid meeting time.")
      */
     private $whenMeet;
 
@@ -74,6 +79,7 @@ class Profile
      * @var string $lookingFor
      *
      * @ORM\Column(name="lookingFor", type="string", length=255)
+     * @Assert\Choice(choices = {"friendship", "relationship", "1-on-1 sex", "3some/group sex", null})
      */
     private $lookingFor;
 
@@ -95,6 +101,7 @@ class Profile
      * @var string $practice
      *
      * @ORM\Column(name="practice", type="string", length=255)
+     * @Assert\Choice(choices = {"safe only", "bareback only", "sometimes safe", "anything goes", null})
      */
     private $practice;
 
