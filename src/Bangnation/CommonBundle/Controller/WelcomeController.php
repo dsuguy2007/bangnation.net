@@ -12,8 +12,11 @@ class WelcomeController extends Controller
      * @Route("/", name="welcome")
      * @Template()
      */
-    public function indexAction() {        
+    public function indexAction() {
+        $form = $this->createForm(new \Bangnation\UserBundle\Form\ProfileType());
+        
         return array(
+            'form' => $form->createView(),
         );
     }
 }
