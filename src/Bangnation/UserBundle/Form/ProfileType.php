@@ -21,6 +21,7 @@ class ProfileType extends AbstractType
                     "versatile/bottom" => "Versatile/Bottom",
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
             ->add('race')
             ->add('hivStatus', 'choice', array(
@@ -31,6 +32,7 @@ class ProfileType extends AbstractType
                     'unknown' => "Unknown",
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
             ->add('smokingStatus')
             ->add('whereMeet', 'choice', array(
@@ -41,6 +43,7 @@ class ProfileType extends AbstractType
                     'hotel' => 'Hotel',
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
             ->add('whenMeet', 'choice', array(
                 'choices' => array(
@@ -49,6 +52,7 @@ class ProfileType extends AbstractType
                     'after work' => 'After Work',
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
             ->add('lookingFor', 'choice', array(
                 'choices' => array(
@@ -58,6 +62,7 @@ class ProfileType extends AbstractType
                     '3some/group sex' => '3some/Group Sex',
                 ),
                 'required' => false,
+                'expanded' => true,
             ))
             ->add('drink')
             ->add('smoke')
@@ -68,6 +73,8 @@ class ProfileType extends AbstractType
                     'sometimes safe' => 'Sometimes Safe',
                     'anything goes' => 'Anything goes',
                 ),
+                'required' => false,
+                'expanded' => true,
             ))
             ->add('tattoos')
             ->add('piercings')
