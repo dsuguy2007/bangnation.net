@@ -62,28 +62,28 @@ class Profile
     /**
      * @var string $waistSize
      *
-     * @ORM\Column(name="waistSize", type="integer")
+     * @ORM\Column(name="waist_size", type="integer")
      */
     private $waistSize;
     
     /**
      * @var string $hairColor
      *
-     * @ORM\Column(name="hairColor", type="string", length=255)
+     * @ORM\Column(name="hair_color", type="string", length=255)
      */
     private $hairColor;
     
     /**
      * @var string $eyeColor
      *
-     * @ORM\Column(name="eyeColor", type="string", length=255)
+     * @ORM\Column(name="eye_color", type="string", length=255)
      */
     private $eyeColor;
     
     /**
      * @var string $bodyType
      *
-     * @ORM\Column(name="bodyType", type="string", length=255)
+     * @ORM\Column(name="body_type", type="string", length=255)
      */
     private $bodyType;
     
