@@ -1,5 +1,5 @@
 {
-    "hash": "0240d2b5d0e8a44b59bca3199c94eccd",
+    "hash": "76218ff5ad16d886b2803b1e8ea2eab6",
     "packages": [
         {
             "package": "craue/formflow-bundle",
@@ -54,6 +54,10 @@
             "version": "dev-master",
             "source-reference": "7a9d20e69ac0363432fae86523776b14592993d7",
             "commit-date": "1343834547"
+        },
+        {
+            "package": "imagine/Imagine",
+            "version": "v0.2.8"
         },
         {
             "package": "jms/aop-bundle",
@@ -134,8 +138,20 @@
             "commit-date": "1344261272"
         },
         {
+            "package": "liip/imagine-bundle",
+            "version": "dev-master",
+            "source-reference": "455fe6078a702305f6418fe03514e49d29a06cad",
+            "commit-date": "1343044783"
+        },
+        {
             "package": "monolog/monolog",
             "version": "1.1.0"
+        },
+        {
+            "package": "mopa/bootstrap-bundle",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "mopa/bootstrap-bundle",
@@ -158,8 +174,20 @@
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "sensio/framework-extra-bundle",
+            "version": "dev-master",
             "source-reference": "ade2d53b20a9fc3428f04c863b3fd4fca0b62181",
             "commit-date": "1344072374"
+        },
+        {
+            "package": "sensio/generator-bundle",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "sensio/generator-bundle",
@@ -182,8 +210,20 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/assetic-bundle",
+            "version": "dev-master",
             "source-reference": "0c09207be07b044e06d28a4111f554f071e5b658",
             "commit-date": "1343812720"
+        },
+        {
+            "package": "symfony/monolog-bundle",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/monolog-bundle",
@@ -194,20 +234,18 @@
         {
             "package": "symfony/swiftmailer-bundle",
             "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/swiftmailer-bundle",
+            "version": "dev-master",
             "source-reference": "v2.1.0-RC1",
             "commit-date": "1342684512"
         },
         {
             "package": "symfony/symfony",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/symfony",
-            "version": "dev-master",
-            "source-reference": "b91a4a8368abdca7b9728f3cf170175c3aa3befc",
-            "commit-date": "1344326985"
+            "version": "v2.1.0-RC1"
         },
         {
             "package": "thomas-mcdonald/bootstrap-sass",
@@ -237,7 +275,7 @@
             "package": "twitter/bootstrap",
             "version": "master",
             "source-reference": "master",
-            "commit-date": "1339090286"
+            "commit-date": "1344546024"
         }
     ],
     "packages-dev": null,
@@ -246,6 +284,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "symfony/symfony": 5,
         "doctrine/doctrine-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "twig/extensions": 20,
@@ -260,6 +299,7 @@
         "knplabs/knp-paginator-bundle": 20,
         "knplabs/knp-menu-bundle": 20,
         "craue/formflow-bundle": 20,
+        "liip/imagine-bundle": 20,
         "thomas-mcdonald/bootstrap-sass": 20
     }
 }
