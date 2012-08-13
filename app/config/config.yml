@@ -111,6 +111,10 @@ liip_imagine:
     controller_action:    liip_imagine.controller:filterAction
     formats:              []
     filter_sets:
+        logo_small:
+            quality: 100
+            filters: 
+                thumbnail: { size: [150, ~], mode: outbound, allow_upscale: true }          
         logo_medium:
             quality: 100
             filters: 
