@@ -17,15 +17,34 @@
 {% block headline %}{% endblock headline %}
 
 {% block footer %}
-<p>
-    <a href="{{ path('contact') }}">Contact Us</a>
-    |
-    <a href="{{ path('about') }}">About Us</a>
-    |
-    <a href="{{ path('terms') }}">Terms of Use/Community Guidelines</a>
-    |
-    <a href="{{ path('privacy') }}">Privacy Policy</a>
-</p>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="hero-unit">
+                <h3>INFORMATION</h3>
+                <a href="{{ path('about') }}">About Us</a>
+                <br>
+                <a href="{{ path('terms') }}">Terms and Conditions</a>
+                <br>
+                <a href="{{ path('privacy') }}">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="hero-unit">
+                <h3>CUSTOMER SERVICE</h3>
+                <a href="{{ path('contact') }}">Contact Us</a>
+            </div>
+        </div>
+        <div class="span6 well">
+            <p>
+                All users must agree to our Membership Terms and Conditions,
+                Privacy Policy, Community Guidelines and User Agreement and in
+                so doing, contractually represent to us that they are at least
+                18 years of age, and that all images are posted by them with the
+                sole intention of meeting other men, and are of individuals that
+                are also over the age of 18.
+            </p>
+        </div>
+    </div>
 <p>&copy; Bang Nation {{ '' | date('Y') }}</p>
 {% endblock footer %}
 
