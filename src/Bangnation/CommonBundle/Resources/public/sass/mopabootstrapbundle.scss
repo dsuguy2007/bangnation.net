@@ -1,0 +1,34 @@
+/*!
+ * MopaBootstrapBundle
+ *
+ * Copyright 2011 Mohrenweiser & Partner
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Import this file in your sass files as first to be abled to access sass vars from your file
+ * OR
+ * Add it to the stylesheets of assetic or
+ *
+ * Be careful when using less this way, might be most straight forward, but assetic doesnt check the included files 
+ * for changes, and will only regenerate the css if it detects changes in this file!
+ * 
+ * For development it might be easier to include all you sass files in the layout directly
+ * But then assetic will compile each sass file in a own compiler session so you cant mix in the sass style into bootstrap, which might not be OK
+ */
+
+// Main bootstrap.sass entry point
+@import "../../../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/bootstrap-sass/vendor/assets/stylesheets/_bootstrap.scss";
+
+// The Paginator scss for MopaBootstrapBundle
+@import "../../../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/public/sass/paginator.scss";
+
+// Collection support for MopaBootstrapBundle
+@import "../../../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/public/sass/collections.scss";
+
+// include the responsive after all of your stuff!
+@import "../../../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/bootstrap-sass/vendor/assets/stylesheets/_bootstrap-responsive.scss";
+
+// if you have any variables.less file INCLUDE IT AFTER EVERYTHING cause responsive.less also overrides it with the one from bootstrap!!!!!
+@import 'variables.scss';
+
+//@import 'main.less';
