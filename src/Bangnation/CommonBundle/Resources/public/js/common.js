@@ -11,5 +11,9 @@ $(function() {
     );
         
     $('#event-ticker').ticker();
+
+    $('.equal-heights').equalHeights();
+
+    $('.equal-widths').equalWidths();
 });
 
