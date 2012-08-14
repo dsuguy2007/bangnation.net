@@ -15,6 +15,7 @@ class RegistrationFormType extends BaseType
         $builder
             ->add('birthDate', 'birthday', array(
                 'widget' => 'choice',
+                'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
             ))
         ; 
     }
