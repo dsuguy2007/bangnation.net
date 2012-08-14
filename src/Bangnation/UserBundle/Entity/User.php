@@ -21,6 +21,18 @@ class User extends BaseUser
      * @ORM\Column(name="birth_date", type="datetime")
      */
     protected $birthDate;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\Preference", inversedBy="users")
+     * @ORM\JoinTable(name="Users_TurnOns")
+     */
+    protected $turnOns;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\Preference", inversedBy="users")
+     * @ORM\JoinTable(name="Users_TurnOffs")
+     */
+    protected $turnOffs;
 
     public function __construct()
     {
@@ -59,5 +71,71 @@ class User extends BaseUser
     public function getBirthDate()
     {
         return $this->birthDate;
+    }
+
+    /**
+     * Add turnOns
+     *
+     * @param Bangnation\UserBundle\Entity\Preference $turnOns
+     * @return User
+     */
+    public function addTurnOn(\Bangnation\UserBundle\Entity\Preference $turnOns)
+    {
+        $this->turnOns[] = $turnOns;
+    
+        return $this;
+    }
+
+    /**
+     * Remove turnOns
+     *
+     * @param Bangnation\UserBundle\Entity\Preference $turnOns
+     */
+    public function removeTurnOn(\Bangnation\UserBundle\Entity\Preference $turnOns)
+    {
+        $this->turnOns->removeElement($turnOns);
+    }
+
+    /**
+     * Get turnOns
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTurnOns()
+    {
+        return $this->turnOns;
+    }
+
+    /**
+     * Add turnOffs
+     *
+     * @param Bangnation\UserBundle\Entity\Preference $turnOffs
+     * @return User
+     */
+    public function addTurnOff(\Bangnation\UserBundle\Entity\Preference $turnOffs)
+    {
+        $this->turnOffs[] = $turnOffs;
+    
+        return $this;
+    }
+
+    /**
+     * Remove turnOffs
+     *
+     * @param Bangnation\UserBundle\Entity\Preference $turnOffs
+     */
+    public function removeTurnOff(\Bangnation\UserBundle\Entity\Preference $turnOffs)
+    {
+        $this->turnOffs->removeElement($turnOffs);
+    }
+
+    /**
+     * Get turnOffs
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTurnOffs()
+    {
+        return $this->turnOffs;
     }
 }

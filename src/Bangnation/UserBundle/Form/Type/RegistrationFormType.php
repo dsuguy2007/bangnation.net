@@ -16,6 +16,7 @@ class RegistrationFormType extends BaseType
             ->add('birthDate', 'birthday', array(
                 'widget' => 'choice',
                 'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
+                'format' => 'yyyy-MMM-dd',                
             ))
         ; 
     }

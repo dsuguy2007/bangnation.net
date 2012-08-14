@@ -4,9 +4,9 @@ namespace Combo\BrandBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Bangnation\UserBundle\Entity\TurnOnsOffs;
+use Bangnation\UserBundle\Entity\Preference;
 
-class LoadTurnOnsOffsData extends AbstractFixture implements OrderedFixtureInterface
+class LoadPreferenceData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -57,12 +57,12 @@ class LoadTurnOnsOffsData extends AbstractFixture implements OrderedFixtureInter
         );
 
         foreach ($names as $key => $name) {
-            $turnOnsOffs = new TurnOnsOffs();
-            $turnOnsOffs->setName($name);
+            $preference = new Preference();
+            $preference->setName($name);
 
-            $this->addReference("turn-ons-offs-$key", $turnOnsOffs);
+            $this->addReference("preference-$key", $preference);
 
-            $manager->persist($turnOnsOffs);
+            $manager->persist($preference);
         }
         
         $manager->flush();        
@@ -75,6 +75,6 @@ class LoadTurnOnsOffsData extends AbstractFixture implements OrderedFixtureInter
      */
     public function getOrder()
     {
-        return 1;
+        return 10;
     }
 }
