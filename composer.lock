@@ -1,6 +1,30 @@
 {
-    "hash": "76218ff5ad16d886b2803b1e8ea2eab6",
+    "hash": "018caa4acce01a3b7b95606bd608f514",
     "packages": [
+        {
+            "package": "behat/behat",
+            "version": "v2.3.5"
+        },
+        {
+            "package": "behat/behat-bundle",
+            "version": "dev-master",
+            "source-reference": "63729b0b41ef4dce238207015cc9b33bbcc9b1a4",
+            "commit-date": "1340834920"
+        },
+        {
+            "package": "behat/gherkin",
+            "version": "v2.1.1"
+        },
+        {
+            "package": "behat/mink",
+            "version": "v1.3.3"
+        },
+        {
+            "package": "behat/mink-bundle",
+            "version": "dev-master",
+            "source-reference": "b44df60a8533824469591a8d3b8e2dbc916a1d59",
+            "commit-date": "1344291139"
+        },
         {
             "package": "craue/formflow-bundle",
             "version": "dev-master",
@@ -150,12 +174,6 @@
         {
             "package": "mopa/bootstrap-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "mopa/bootstrap-bundle",
-            "version": "dev-master",
             "source-reference": "179ec95121633c00d283aed9ae58fad6e884bcc1",
             "commit-date": "1344024984"
         },
@@ -174,20 +192,8 @@
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "sensio/framework-extra-bundle",
-            "version": "dev-master",
             "source-reference": "ade2d53b20a9fc3428f04c863b3fd4fca0b62181",
             "commit-date": "1344072374"
-        },
-        {
-            "package": "sensio/generator-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "sensio/generator-bundle",
@@ -210,32 +216,14 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/assetic-bundle",
-            "version": "dev-master",
             "source-reference": "0c09207be07b044e06d28a4111f554f071e5b658",
             "commit-date": "1343812720"
         },
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/monolog-bundle",
-            "version": "dev-master",
             "source-reference": "v2.1.0-BETA4",
             "commit-date": "1341078487"
-        },
-        {
-            "package": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/swiftmailer-bundle",
@@ -294,6 +282,8 @@
         "sensio/distribution-bundle": 20,
         "sensio/framework-extra-bundle": 20,
         "sensio/generator-bundle": 20,
+        "behat/behat-bundle": 20,
+        "behat/mink-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "mopa/bootstrap-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,

@@ -20,6 +20,8 @@
         "sensio/generator-bundle": "dev-master",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
+        "behat/behat-bundle": "dev-master",
+        "behat/mink-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
         "twitter/bootstrap": "master",
         "mopa/bootstrap-bundle": "dev-master",
