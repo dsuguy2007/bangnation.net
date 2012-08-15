@@ -15,5 +15,7 @@ db: bangnation_db
 Test users
 ==========
 super_admin/123
+
 john/123
+
 adam/123
