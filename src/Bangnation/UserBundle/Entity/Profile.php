@@ -198,7 +198,13 @@ class Profile
      */
     private $circumcised;
 
-
+    /**
+     * The user associated with this profile.
+     * 
+     * @ORM\OneToOne(targetEntity="User", inversedBy="profile")
+     **/
+    private $user;
+    
     /**
      * Get id
      *
@@ -759,5 +765,28 @@ class Profile
     public function getCircumcised()
     {
         return $this->circumcised;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Bangnation\UserBundle\Entity\User $user
+     * @return Profile
+     */
+    public function setUser(\Bangnation\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Bangnation\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

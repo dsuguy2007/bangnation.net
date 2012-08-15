@@ -33,6 +33,13 @@ class User extends BaseUser
      * @ORM\JoinTable(name="Users_TurnOffs")
      */
     protected $turnOffs;
+    
+    /**
+     * The optional profile associated with this user.
+     * 
+     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     **/
+    private $profile;
 
     public function __construct()
     {
@@ -137,5 +144,28 @@ class User extends BaseUser
     public function getTurnOffs()
     {
         return $this->turnOffs;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param Bangnation\UserBundle\Entity\Profile $profile
+     * @return User
+     */
+    public function setProfile(\Bangnation\UserBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+    
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return Bangnation\UserBundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 }
