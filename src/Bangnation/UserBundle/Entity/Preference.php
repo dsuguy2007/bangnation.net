@@ -38,6 +38,11 @@ class Preference
      */
     protected $turnOffUsers;
     
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     /**
      * Get id
      *
@@ -70,6 +75,7 @@ class Preference
     {
         return $this->name;
     }
+    
     /**
      * Constructor
      */

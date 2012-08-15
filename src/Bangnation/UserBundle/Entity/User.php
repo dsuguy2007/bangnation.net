@@ -37,7 +37,7 @@ class User extends BaseUser
     /**
      * The optional profile associated with this user.
      * 
-     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="Profile", inversedBy="user", cascade={"persist", "remove"})
      **/
     private $profile;
 

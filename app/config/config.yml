@@ -89,11 +89,13 @@ fos_user:
         form:
             type: bangnation_user_registration
         confirmation:
-            enabled: true
-            
+            enabled: true            
     from_email:
         address:        no-reply@bangnation.net
         sender_name:    Bangnation
+    profile:
+        form:
+            type: bangnation_user_profile
         
 mopa_bootstrap:
     form:
@@ -126,3 +128,9 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: bangnation_user_registration }
+            
+    bangnation.user.profile.form.type:
+        class: Bangnation\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: bangnation_user_profile }

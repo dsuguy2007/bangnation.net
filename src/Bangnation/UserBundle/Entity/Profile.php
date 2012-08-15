@@ -29,75 +29,75 @@ class Profile
      *
      * @ORM\Column(name="pro_ad", type="boolean")
      */
-    private $proAd;
+    private $proAd = false;
 
     /**
      * @var string $heading
      *
-     * @ORM\Column(name="heading", type="string", length=255)
+     * @ORM\Column(name="heading", type="string", length=255, nullable=true)
      */
     private $heading;
     
     /**
      * @var string $body
      *
-     * @ORM\Column(name="body", type="text")
+     * @ORM\Column(name="body", type="text", nullable=true)
      */
     private $body;
     
     /**
      * @var string $height
      *
-     * @ORM\Column(name="height", type="float")
+     * @ORM\Column(name="height", type="float", nullable=true)
      */
     private $height;
     
     /**
      * @var string $weight
      *
-     * @ORM\Column(name="weight", type="float")
+     * @ORM\Column(name="weight", type="float", nullable=true)
      */
     private $weight;
     
     /**
      * @var string $waistSize
      *
-     * @ORM\Column(name="waist_size", type="integer")
+     * @ORM\Column(name="waist_size", type="integer", nullable=true)
      */
     private $waistSize;
     
     /**
      * @var string $hairColor
      *
-     * @ORM\Column(name="hair_color", type="string", length=255)
+     * @ORM\Column(name="hair_color", type="string", length=255, nullable=true)
      */
     private $hairColor;
     
     /**
      * @var string $eyeColor
      *
-     * @ORM\Column(name="eye_color", type="string", length=255)
+     * @ORM\Column(name="eye_color", type="string", length=255, nullable=true)
      */
     private $eyeColor;
     
     /**
      * @var string $bodyType
      *
-     * @ORM\Column(name="body_type", type="string", length=255)
+     * @ORM\Column(name="body_type", type="string", length=255, nullable=true)
      */
     private $bodyType;
     
     /**
      * @var string $bodyHair
      *
-     * @ORM\Column(name="body_hair", type="string", length=255)
+     * @ORM\Column(name="body_hair", type="string", length=255, nullable=true)
      */
     private $bodyHair;
 
     /**
      * @var string $position
      *
-     * @ORM\Column(name="position", type="string", length=255)
+     * @ORM\Column(name="position", type="string", length=255, nullable=true)
      * @Assert\Choice(choices = {"top", "bottom", "versatile", "versatile/top", "versatile/bottom", null}, message = "Choose a valid position.")
      */
     private $position;
@@ -105,14 +105,14 @@ class Profile
     /**
      * @var string $race
      *
-     * @ORM\Column(name="race", type="string", length=255)
+     * @ORM\Column(name="race", type="string", length=255, nullable=true)
      */
     private $race;
 
     /**
      * @var string $hivStatus
      *
-     * @ORM\Column(name="hiv_status", type="string", length=255)
+     * @ORM\Column(name="hiv_status", type="string", length=255, nullable=true)
      * @Assert\Choice(choices = {"pos", "neg", "don't care", "unknown", null}, message = "Choose a valid HIV status.")
      */
     private $hivStatus;
@@ -120,14 +120,14 @@ class Profile
     /**
      * @var string $smokingStatus
      *
-     * @ORM\Column(name="smoking_status", type="string", length=255)
+     * @ORM\Column(name="smoking_status", type="string", length=255, nullable=true)
      */
     private $smokingStatus;
 
     /**
      * @var string $whereMeet
      *
-     * @ORM\Column(name="where_meet", type="string", length=255)
+     * @ORM\Column(name="where_meet", type="string", length=255, nullable=true)
      * @Assert\Choice(choices = {"my place", "public", "your place", "hotel", null}, message = "Choose a valid meeting place.")
      */
     private $whereMeet;
@@ -135,7 +135,7 @@ class Profile
     /**
      * @var string $whenMeet
      *
-     * @ORM\Column(name="when_meet", type="string", length=255)
+     * @ORM\Column(name="when_meet", type="string", length=255, nullable=true)
      * @Assert\Choice(choices = {"right now", "weekend, let's plan it.", "after work", null}, message = "Choose a valid meeting time.")
      */
     private $whenMeet;
@@ -143,7 +143,7 @@ class Profile
     /**
      * @var string $lookingFor
      *
-     * @ORM\Column(name="looking_for", type="string", length=255)
+     * @ORM\Column(name="looking_for", type="string", length=255, nullable=true)
      * @Assert\Choice(choices = {"friendship", "relationship", "1-on-1 sex", "3some/group sex", null})
      */
     private $lookingFor;
@@ -151,21 +151,21 @@ class Profile
     /**
      * @var boolean $drink
      *
-     * @ORM\Column(name="drink", type="boolean")
+     * @ORM\Column(name="drink", type="boolean", nullable=true)
      */
     private $drink;
 
     /**
      * @var boolean $smoke
      *
-     * @ORM\Column(name="smoke", type="boolean")
+     * @ORM\Column(name="smoke", type="boolean", nullable=true)
      */
     private $smoke;
 
     /**
      * @var string $practice
      *
-     * @ORM\Column(name="practice", type="string", length=255)
+     * @ORM\Column(name="practice", type="string", length=255, nullable=true)
      * @Assert\Choice(choices = {"safe only", "bareback only", "sometimes safe", "anything goes", null})
      */
     private $practice;
@@ -173,35 +173,35 @@ class Profile
     /**
      * @var boolean $tattoos
      *
-     * @ORM\Column(name="tattoos", type="boolean")
+     * @ORM\Column(name="tattoos", type="boolean", nullable=true)
      */
     private $tattoos;
 
     /**
      * @var boolean $piercings
      *
-     * @ORM\Column(name="piercings", type="boolean")
+     * @ORM\Column(name="piercings", type="boolean", nullable=true)
      */
     private $piercings;
 
     /**
      * @var float $cockSize
      *
-     * @ORM\Column(name="cock_size", type="float")
+     * @ORM\Column(name="cock_size", type="float", nullable=true)
      */
     private $cockSize;
 
     /**
      * @var boolean $circumcised
      *
-     * @ORM\Column(name="circumcised", type="boolean")
+     * @ORM\Column(name="circumcised", type="boolean", nullable=true)
      */
     private $circumcised;
 
     /**
      * The user associated with this profile.
      * 
-     * @ORM\OneToOne(targetEntity="User", inversedBy="profile")
+     * @ORM\OneToOne(targetEntity="User", mappedBy="profile", cascade={"persist", "remove"})
      **/
     private $user;
     
