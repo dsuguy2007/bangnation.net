@@ -1,3 +1,8 @@
+BangnationChatBundle:
+    resource: "@BangnationChatBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 BangnationEventBundle:
     resource: "@BangnationEventBundle/Controller/"
     type:     annotation

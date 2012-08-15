@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Bangnation\CommonBundle\BangnationCommonBundle(),
             new Bangnation\UserBundle\BangnationUserBundle(),
             new Bangnation\EventBundle\BangnationEventBundle(),
+            new Bangnation\ChatBundle\BangnationChatBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
