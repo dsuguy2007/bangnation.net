@@ -1,6 +1,7 @@
 {% extends 'MopaBootstrapBundle::base_initializr.html.twig' %}
 
 {% block head_style %}
+{{ parent() }}
 {% stylesheets
     '@BangnationCommonBundle/Resources/public/sass/mopabootstrapbundle.scss'
     '@BangnationCommonBundle/Resources/public/css/ticker-style.css'
@@ -16,19 +17,23 @@
 
 {% block footer %}
 <div class="row-fluid equal-heights">
-    <div class="span3 hero-unit box">
-        <h3>INFORMATION</h3>
+    <section class="span3 hero-unit box">
+        <header>
+            <h3>INFORMATION</h3>
+        </header>
         <a href="{{ path('about') }}">About Us</a>
         <br>
         <a href="{{ path('terms') }}">Terms and Conditions</a>
         <br>
         <a href="{{ path('privacy') }}">Privacy Policy</a>
-    </div>
-    <div class="span3 hero-unit box">
-        <h3>CUSTOMER SERVICE</h3>
+    </section>
+    <section class="span3 hero-unit box">
+        <header>
+            <h3>CUSTOMER SERVICE</h3>
+        </header>
         <a href="{{ path('contact') }}">Contact Us</a>
-    </div>
-    <div class="span6 hero-unit box">
+    </section>
+    <section class="span6 hero-unit box">
         <p>
             All users must agree to our Membership Terms and Conditions,
             Privacy Policy, Community Guidelines and User Agreement and in
@@ -37,7 +42,7 @@
             sole intention of meeting other men, and are of individuals that
             are also over the age of 18.
         </p>
-    </div>
+    </section>
 </div>
 <p>&copy; Bang Nation {{ '' | date('Y') }}</p>
 {% endblock footer %}
