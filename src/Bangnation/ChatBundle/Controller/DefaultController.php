@@ -156,7 +156,11 @@ class DefaultController extends Controller
             return new Response("1");
     }
 
-    public function closeChat() {
+    /**
+     * @Route("/chat/close")
+     * @Template()
+     */
+    public function closeAction() {
 
             unset($_SESSION['openChatBoxes'][$_POST['chatbox']]);
 
