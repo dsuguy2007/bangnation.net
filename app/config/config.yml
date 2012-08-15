@@ -98,6 +98,25 @@ fos_user:
             type: bangnation_user_profile
         
 mopa_bootstrap:
+    initializr: 
+        meta:
+            title:        "Bang Nation"
+            description:  "Where citizens come together"
+            keywords:     "keyword1,keyword 2"
+#            author_name:  "wormling"
+#            author_url:   "/wormling.txt"
+            nofollow:     false
+            noindex:      false
+            
+#            sitemap:
+#            feed_rss:
+#            feed_atom:
+        dns_prefetch:
+            - '//ajax.googleapis.com'
+        google:
+            wt: 'xxx'
+            analytics: 'UA-xxxxxxx-xx'
+        diagnostic_mode: true
     form:
         show_legend: false
         show_child_legend: false
