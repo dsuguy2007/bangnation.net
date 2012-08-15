@@ -23,6 +23,11 @@ class User extends BaseUser
     protected $birthDate;
     
     /**
+     * @ORM\Column(name="online", type="boolean")
+     */
+    protected $online;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\Preference", inversedBy="users")
      * @ORM\JoinTable(name="Users_TurnOns")
      */
@@ -54,7 +59,9 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        
+        
+        $this->online = false;
     }
 
     /**
@@ -243,5 +250,28 @@ class User extends BaseUser
     public function getOutgoingChats()
     {
         return $this->outgoingChats;
+    }
+
+    /**
+     * Set online
+     *
+     * @param boolean $online
+     * @return User
+     */
+    public function setOnline($online)
+    {
+        $this->online = $online;
+    
+        return $this;
+    }
+
+    /**
+     * Get online
+     *
+     * @return boolean 
+     */
+    public function getOnline()
+    {
+        return $this->online;
     }
 }
