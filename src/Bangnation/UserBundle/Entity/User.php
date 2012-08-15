@@ -40,6 +40,16 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="Profile", inversedBy="user", cascade={"persist", "remove"})
      **/
     private $profile;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="targetUser")
+     */
+    private $incomingChats;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="sourceUser")
+     */
+    private $outgoingChats;
 
     public function __construct()
     {
@@ -167,5 +177,71 @@ class User extends BaseUser
     public function getProfile()
     {
         return $this->profile;
+    }
+
+    /**
+     * Add incomingChats
+     *
+     * @param Bangnation\ChatBundle\Entity\Chat $incomingChats
+     * @return User
+     */
+    public function addIncomingChat(\Bangnation\ChatBundle\Entity\Chat $incomingChats)
+    {
+        $this->incomingChats[] = $incomingChats;
+    
+        return $this;
+    }
+
+    /**
+     * Remove incomingChats
+     *
+     * @param Bangnation\ChatBundle\Entity\Chat $incomingChats
+     */
+    public function removeIncomingChat(\Bangnation\ChatBundle\Entity\Chat $incomingChats)
+    {
+        $this->incomingChats->removeElement($incomingChats);
+    }
+
+    /**
+     * Get incomingChats
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getIncomingChats()
+    {
+        return $this->incomingChats;
+    }
+
+    /**
+     * Add outgoingChats
+     *
+     * @param Bangnation\ChatBundle\Entity\Chat $outgoingChats
+     * @return User
+     */
+    public function addOutgoingChat(\Bangnation\ChatBundle\Entity\Chat $outgoingChats)
+    {
+        $this->outgoingChats[] = $outgoingChats;
+    
+        return $this;
+    }
+
+    /**
+     * Remove outgoingChats
+     *
+     * @param Bangnation\ChatBundle\Entity\Chat $outgoingChats
+     */
+    public function removeOutgoingChat(\Bangnation\ChatBundle\Entity\Chat $outgoingChats)
+    {
+        $this->outgoingChats->removeElement($outgoingChats);
+    }
+
+    /**
+     * Get outgoingChats
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getOutgoingChats()
+    {
+        return $this->outgoingChats;
     }
 }
