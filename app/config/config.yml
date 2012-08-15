@@ -116,7 +116,7 @@ mopa_bootstrap:
         google:
             wt: 'xxx'
             analytics: 'UA-xxxxxxx-xx'
-        diagnostic_mode: true
+        diagnostic_mode: false
     form:
         show_legend: false
         show_child_legend: false
