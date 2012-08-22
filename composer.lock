@@ -1,5 +1,5 @@
 {
-    "hash": "c131497d2aa0dadc373bbccad44e7f26",
+    "hash": "06ed01eecf6a025f0bd326a3e4a66bf7",
     "packages": [
         {
             "package": "behat/behat",
@@ -74,16 +74,22 @@
             "commit-date": "1343850025"
         },
         {
+            "package": "friendsofsymfony/jsrouting-bundle",
+            "version": "dev-master",
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "friendsofsymfony/jsrouting-bundle",
+            "version": "dev-master",
+            "source-reference": "1.0.1",
+            "commit-date": "1344246467"
+        },
+        {
             "package": "friendsofsymfony/user-bundle",
             "version": "dev-master",
             "source-reference": "7a9d20e69ac0363432fae86523776b14592993d7",
             "commit-date": "1343834547"
-        },
-        {
-            "package": "gedmo/doctrine-extensions",
-            "version": "dev-master",
-            "alias-pretty-version": "2.3.x-dev",
-            "alias-version": "2.3.9999999.9999999-dev"
         },
         {
             "package": "gedmo/doctrine-extensions",
@@ -309,6 +315,7 @@
         "knplabs/knp-menu-bundle": 20,
         "craue/formflow-bundle": 20,
         "liip/imagine-bundle": 20,
-        "thomas-mcdonald/bootstrap-sass": 20
+        "thomas-mcdonald/bootstrap-sass": 20,
+        "friendsofsymfony/jsrouting-bundle": 20
     }
 }

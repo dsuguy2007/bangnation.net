@@ -30,7 +30,8 @@
         "knplabs/knp-menu-bundle": "dev-master",
         "craue/formflow-bundle": "dev-master",
         "liip/imagine-bundle": "dev-master",
-        "thomas-mcdonald/bootstrap-sass": "dev-master"
+        "thomas-mcdonald/bootstrap-sass": "dev-master",
+        "friendsofsymfony/jsrouting-bundle": "dev-master"
     },
     "repositories": [
         {
