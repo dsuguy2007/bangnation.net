@@ -11,7 +11,7 @@ use Bangnation\ChatBundle\Entity\Chat;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/chat/heartbeat")
+     * @Route("/chat/heartbeat", name="chat_heartbeat", options={"expose"=true})
      * @Template()
      */
     public function heartbeatAction()
@@ -41,18 +41,20 @@ class DefaultController extends Controller
             if (!empty($_SESSION['openChatBoxes'])) {
                 foreach ($_SESSION['openChatBoxes'] as $chatbox => $time) {
                     if (!isset($_SESSION['tsChatBoxes'][$chatbox])) {
-                        $now = time() - strtotime($time->format('g:iA M dS'));
-                        $time = $time->format('g:iA M dS');
+                        if (is_object($time)) {
+                            $now = time() - strtotime($time->format('g:iA M dS'));
+                            $time = $time->format('g:iA M dS');
 
-                        $message = "Sent at $time";
-                        if ($now > 180) {
-                            $items[] = array(
-                                's' => '2',
-                                'f' => "$chatbox",
-                                'm' => "{$message}"
-                            );
+                            $message = "Sent at $time";
+                            if ($now > 180) {
+                                $items[] = array(
+                                    's' => '2',
+                                    'f' => "$chatbox",
+                                    'm' => "{$message}"
+                                );
 
-                            $_SESSION['tsChatBoxes'][$chatbox] = 1;
+                                $_SESSION['tsChatBoxes'][$chatbox] = 1;
+                            }
                         }
                     }
                 }
@@ -83,7 +85,7 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/chat/startsession")
+     * @Route("/chat/startsession", name="chat_startsession", options={"expose"=true})
      * @Template()
      */
     public function startSessionAction() {
@@ -110,7 +112,7 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/chat/send")
+     * @Route("/chat/send", name="chat_send", options={"expose"=true})
      * @Template()
      */
     public function sendAction() {
@@ -157,7 +159,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/chat/close")
+     * @Route("/chat/close", name="chat_close", options={"expose"=true})
      * @Template()
      */
     public function closeAction() {
