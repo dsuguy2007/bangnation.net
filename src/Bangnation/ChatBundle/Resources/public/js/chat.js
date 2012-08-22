@@ -322,7 +322,7 @@ function checkChatBoxInputKey(event,chatboxtextarea,chatboxtitle) {
 
 function startChatSession(){  
 	$.ajax({
-	  url: "chat/startsession",
+	  url: Routing.generate('chat_startsession'),
 	  cache: false,
 	  dataType: "json",
 	  success: function(data) {
