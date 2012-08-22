@@ -1,5 +1,5 @@
 {
-    "hash": "018caa4acce01a3b7b95606bd608f514",
+    "hash": "c131497d2aa0dadc373bbccad44e7f26",
     "packages": [
         {
             "package": "behat/behat",
@@ -78,6 +78,18 @@
             "version": "dev-master",
             "source-reference": "7a9d20e69ac0363432fae86523776b14592993d7",
             "commit-date": "1343834547"
+        },
+        {
+            "package": "gedmo/doctrine-extensions",
+            "version": "dev-master",
+            "alias-pretty-version": "2.3.x-dev",
+            "alias-version": "2.3.9999999.9999999-dev"
+        },
+        {
+            "package": "gedmo/doctrine-extensions",
+            "version": "dev-master",
+            "source-reference": "760896ae8c03a3c11f6f57e2644f0a6ab267b667",
+            "commit-date": "1344324734"
         },
         {
             "package": "imagine/Imagine",
@@ -202,6 +214,12 @@
             "commit-date": "1343980150"
         },
         {
+            "package": "stof/doctrine-extensions-bundle",
+            "version": "dev-master",
+            "source-reference": "f31a0861de08b6594f09430a4cbaf0618e5e11ad",
+            "commit-date": "1343029923"
+        },
+        {
             "package": "swiftmailer/swiftmailer",
             "version": "dev-master",
             "alias-pretty-version": "4.2.x-dev",
@@ -275,6 +293,7 @@
         "symfony/symfony": 5,
         "doctrine/doctrine-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
+        "stof/doctrine-extensions-bundle": 20,
         "twig/extensions": 20,
         "symfony/assetic-bundle": 20,
         "symfony/swiftmailer-bundle": 20,
