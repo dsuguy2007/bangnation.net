@@ -3,6 +3,9 @@
 namespace Bangnation\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Sluggable\Sluggable;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Bangnation\EventBundle\Entity\Event
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Bangnation\EventBundle\Entity\EventRepository")
  */
-class Event
+class Event implements Sluggable
 {
     /**
      * @var integer $id
@@ -22,6 +25,27 @@ class Event
     private $id;
 
     /**
+     * @Gedmo\Slug(separator="-", updatable=true, fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=128, unique=true)
+     */
+    private $slug;
+    
+    /**
+     * @var string $privacy
+     *
+     * @ORM\Column(name="privacy", type="string", length=255, nullable=true)
+     * @Assert\Choice(choices = {"require approval to attend", "anyone can attend", "private, needs to be invited", null}, message = "Choose a valid privacy.")
+     */
+    private $privacy;
+    
+    /**
+     * @var string $profilePicRequired
+     *
+     * @ORM\Column(name="profile_pic_required", type="boolean")
+     */
+    private $profilePicRequired;
+    
+    /**
      * @var string $description
      *
      * @ORM\Column(name="description", type="text")
@@ -31,7 +55,7 @@ class Event
     /**
      * @var string $image
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -45,32 +69,36 @@ class Event
     /**
      * @var string $url
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
 
     /**
      * @var \DateTime $duration
      *
-     * @ORM\Column(name="duration", type="time")
+     * @ORM\Column(name="duration", type="time", nullable=true)
      */
     private $duration;
 
     /**
      * @var \DateTime $startDate
      *
-     * @ORM\Column(name="startDate", type="datetime")
+     * @ORM\Column(name="start_date", type="datetime")
      */
     private $startDate;
 
     /**
      * @var \DateTime $endDate
      *
-     * @ORM\Column(name="endDate", type="datetime")
+     * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
     private $endDate;
 
-
+    public function __construct()
+    {
+        $this->profilePicRequired = false;
+    }
+    
     /**
      * Get id
      *
@@ -240,5 +268,74 @@ class Event
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Event
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set privacy
+     *
+     * @param string $privacy
+     * @return Event
+     */
+    public function setPrivacy($privacy)
+    {
+        $this->privacy = $privacy;
+    
+        return $this;
+    }
+
+    /**
+     * Get privacy
+     *
+     * @return string 
+     */
+    public function getPrivacy()
+    {
+        return $this->privacy;
+    }
+
+    /**
+     * Set profilePicRequired
+     *
+     * @param boolean $profilePicRequired
+     * @return Event
+     */
+    public function setProfilePicRequired($profilePicRequired)
+    {
+        $this->profilePicRequired = $profilePicRequired;
+    
+        return $this;
+    }
+
+    /**
+     * Get profilePicRequired
+     *
+     * @return boolean 
+     */
+    public function getProfilePicRequired()
+    {
+        return $this->profilePicRequired;
     }
 }
