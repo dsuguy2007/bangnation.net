@@ -23,9 +23,9 @@ class User extends BaseUser
     protected $birthDate;
     
     /**
-     * @ORM\Column(name="online", type="boolean")
+     * @ORM\Column(name="last_activity", type="datetime", nullable=true)
      */
-    protected $online;
+    protected $lastActivity;
     
     /**
      * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\Preference", inversedBy="users")
@@ -59,9 +59,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        
-        
-        $this->online = false;
     }
 
     /**
@@ -260,7 +257,7 @@ class User extends BaseUser
      */
     public function setOnline($online)
     {
-        $this->online = $online;
+        $this->setLastActivity(new \DateTime("now"));
     
         return $this;
     }
@@ -272,6 +269,32 @@ class User extends BaseUser
      */
     public function getOnline()
     {
-        return $this->online;
+        $now = new DateTime('now');
+        $diff = $this->getLastActivity() - $now->getTimestamp();
+        
+        return $diff < 10;
+    }
+
+    /**
+     * Set lastActivity
+     *
+     * @param \DateTime $lastActivity
+     * @return User
+     */
+    public function setLastActivity($lastActivity)
+    {
+        $this->lastActivity = $lastActivity;
+    
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime 
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
     }
 }
