@@ -93,10 +93,24 @@ class Event implements Sluggable
      * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
     private $endDate;
+    
+    /** 
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsAttending")
+     * @ORM\JoinTable(name="Events_Attendees") 
+     */
+    private $attendees;
+
+    /** 
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsHosting")
+     * @ORM\JoinTable(name="Events_Hosts") 
+     */
+    private $hosts;
 
     public function __construct()
     {
         $this->profilePicRequired = false;
+        $this->attendees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->hosts = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -337,5 +351,71 @@ class Event implements Sluggable
     public function getProfilePicRequired()
     {
         return $this->profilePicRequired;
+    }
+
+    /**
+     * Add attendees
+     *
+     * @param Bangnation\UserBundle\Entity\User $attendees
+     * @return Event
+     */
+    public function addAttendee(\Bangnation\UserBundle\Entity\User $attendees)
+    {
+        $this->attendees[] = $attendees;
+    
+        return $this;
+    }
+
+    /**
+     * Remove attendees
+     *
+     * @param Bangnation\UserBundle\Entity\User $attendees
+     */
+    public function removeAttendee(\Bangnation\UserBundle\Entity\User $attendees)
+    {
+        $this->attendees->removeElement($attendees);
+    }
+
+    /**
+     * Get attendees
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAttendees()
+    {
+        return $this->attendees;
+    }
+
+    /**
+     * Add hosts
+     *
+     * @param Bangnation\UserBundle\Entity\User $hosts
+     * @return Event
+     */
+    public function addHost(\Bangnation\UserBundle\Entity\User $hosts)
+    {
+        $this->hosts[] = $hosts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove hosts
+     *
+     * @param Bangnation\UserBundle\Entity\User $hosts
+     */
+    public function removeHost(\Bangnation\UserBundle\Entity\User $hosts)
+    {
+        $this->hosts->removeElement($hosts);
+    }
+
+    /**
+     * Get hosts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getHosts()
+    {
+        return $this->hosts;
     }
 }
