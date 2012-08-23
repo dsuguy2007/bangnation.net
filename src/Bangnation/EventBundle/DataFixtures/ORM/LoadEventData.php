@@ -15,8 +15,10 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
         $event->setDescription('Event description 1');
         $event->setStartDate(new \DateTime());
         $event->addHost($manager->merge($this->getReference('user-super-admin')));
-        $event->addAttendee($manager->merge($this->getReference('user-john')));
+        $event->addInvitee($manager->merge($this->getReference('user-john')));
         $event->addInvitee($manager->merge($this->getReference('user-adam')));
+        $event->addAttendee($manager->merge($this->getReference('user-john')));
+        $event->addMaybe($manager->merge($this->getReference('user-adam')));
         
         $this->addReference("event-1", $event);
         
