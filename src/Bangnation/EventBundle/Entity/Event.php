@@ -99,6 +99,18 @@ class Event implements Sluggable
      * @ORM\JoinTable(name="Events_Attendees") 
      */
     private $attendees;
+    
+    /** 
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsInvited")
+     * @ORM\JoinTable(name="Events_Invitees") 
+     */
+    private $invitees;
+
+    /** 
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsDeclined")
+     * @ORM\JoinTable(name="Events_Decliners") 
+     */
+    private $decliners;
 
     /** 
      * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsHosting")
@@ -110,6 +122,8 @@ class Event implements Sluggable
     {
         $this->profilePicRequired = false;
         $this->attendees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->invitees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->decliners = new \Doctrine\Common\Collections\ArrayCollection();
         $this->hosts = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -417,5 +431,82 @@ class Event implements Sluggable
     public function getHosts()
     {
         return $this->hosts;
+    }
+    
+    /**
+     * Is this user a host
+     * 
+     * @param \Bangnation\UserBundle\Entity\User $user
+     * @return boolean
+     */
+    public function hasHost(\Bangnation\UserBundle\Entity\User $user)
+    {
+        return $this->hosts->contains($user);
+    }
+
+    /**
+     * Add invitees
+     *
+     * @param Bangnation\UserBundle\Entity\User $invitees
+     * @return Event
+     */
+    public function addInvitee(\Bangnation\UserBundle\Entity\User $invitees)
+    {
+        $this->invitees[] = $invitees;
+    
+        return $this;
+    }
+
+    /**
+     * Remove invitees
+     *
+     * @param Bangnation\UserBundle\Entity\User $invitees
+     */
+    public function removeInvitee(\Bangnation\UserBundle\Entity\User $invitees)
+    {
+        $this->invitees->removeElement($invitees);
+    }
+
+    /**
+     * Get invitees
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitees()
+    {
+        return $this->invitees;
+    }
+
+    /**
+     * Add decliners
+     *
+     * @param Bangnation\UserBundle\Entity\User $decliners
+     * @return Event
+     */
+    public function addDecliner(\Bangnation\UserBundle\Entity\User $decliners)
+    {
+        $this->decliners[] = $decliners;
+    
+        return $this;
+    }
+
+    /**
+     * Remove decliners
+     *
+     * @param Bangnation\UserBundle\Entity\User $decliners
+     */
+    public function removeDecliner(\Bangnation\UserBundle\Entity\User $decliners)
+    {
+        $this->decliners->removeElement($decliners);
+    }
+
+    /**
+     * Get decliners
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getDecliners()
+    {
+        return $this->decliners;
     }
 }

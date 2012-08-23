@@ -50,6 +50,16 @@ class User extends BaseUser
     protected $eventsAttending;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="invitees")
+     */
+    protected $eventsInvited;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="decliners")
+     */
+    protected $eventsDeclined;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="hosts")
      */
     protected $eventsHosting;
@@ -80,6 +90,10 @@ class User extends BaseUser
         $this->turnOffs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->incomingChats = new \Doctrine\Common\Collections\ArrayCollection();
         $this->outgoingChats = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventsAttending = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventsInvited = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventsInvited = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventsHosting = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -409,5 +423,71 @@ class User extends BaseUser
     public function getEventsHosting()
     {
         return $this->eventsHosting;
+    }
+
+    /**
+     * Add eventsInvited
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsInvited
+     * @return User
+     */
+    public function addEventsInvited(\Bangnation\EventBundle\Entity\Event $eventsInvited)
+    {
+        $this->eventsInvited[] = $eventsInvited;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eventsInvited
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsInvited
+     */
+    public function removeEventsInvited(\Bangnation\EventBundle\Entity\Event $eventsInvited)
+    {
+        $this->eventsInvited->removeElement($eventsInvited);
+    }
+
+    /**
+     * Get eventsInvited
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEventsInvited()
+    {
+        return $this->eventsInvited;
+    }
+
+    /**
+     * Add eventsDeclined
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsDeclined
+     * @return User
+     */
+    public function addEventsDeclined(\Bangnation\EventBundle\Entity\Event $eventsDeclined)
+    {
+        $this->eventsDeclined[] = $eventsDeclined;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eventsDeclined
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsDeclined
+     */
+    public function removeEventsDeclined(\Bangnation\EventBundle\Entity\Event $eventsDeclined)
+    {
+        $this->eventsDeclined->removeElement($eventsDeclined);
+    }
+
+    /**
+     * Get eventsDeclined
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEventsDeclined()
+    {
+        return $this->eventsDeclined;
     }
 }
