@@ -122,8 +122,8 @@ mopa_bootstrap:
         dns_prefetch:
             - '//ajax.googleapis.com'
         google:
-            wt: 'xxx'
-            analytics: 'UA-xxxxxxx-xx'
+#            wt: 'xxx'
+            analytics: 'UA-34127518-1'
         diagnostic_mode: false
     form:
         show_legend: false
