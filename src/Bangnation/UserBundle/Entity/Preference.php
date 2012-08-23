@@ -81,14 +81,6 @@ class Preference
     {
         return $this->name;
     }
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add turnOnUsers
