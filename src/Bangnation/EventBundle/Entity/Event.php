@@ -46,6 +46,20 @@ class Event implements Sluggable
     private $profilePicRequired;
     
     /**
+     * @var boolean $inviteListPublic
+     * 
+     * @ORM\Column(name="$inviteListPublic", type="boolean")
+     */
+    private $inviteListPublic;
+    
+    /**
+     * @var boolean $attendingListPublic
+     * 
+     * @ORM\Column(name="$attendingListPublic", type="boolean")
+     */
+    private $attendingListPublic;
+    
+    /**
      * @var string $description
      *
      * @ORM\Column(name="description", type="text")
@@ -127,6 +141,8 @@ class Event implements Sluggable
     public function __construct()
     {
         $this->profilePicRequired = false;
+        $this->inviteListPublic = true;
+        $this->attendingListPublic = true;
         $this->attendees = new \Doctrine\Common\Collections\ArrayCollection();
         $this->invitees = new \Doctrine\Common\Collections\ArrayCollection();
         $this->decliners = new \Doctrine\Common\Collections\ArrayCollection();
@@ -618,5 +634,51 @@ class Event implements Sluggable
         if ($this->hasMaybe($user)) {
             $this->removeMaybe($user);
         }
+    }
+
+    /**
+     * Set inviteListPublic
+     *
+     * @param boolean $inviteListPublic
+     * @return Event
+     */
+    public function setInviteListPublic($inviteListPublic)
+    {
+        $this->inviteListPublic = $inviteListPublic;
+    
+        return $this;
+    }
+
+    /**
+     * Get inviteListPublic
+     *
+     * @return boolean 
+     */
+    public function getInviteListPublic()
+    {
+        return $this->inviteListPublic;
+    }
+
+    /**
+     * Set attendingListPublic
+     *
+     * @param boolean $attendingListPublic
+     * @return Event
+     */
+    public function setAttendingListPublic($attendingListPublic)
+    {
+        $this->attendingListPublic = $attendingListPublic;
+    
+        return $this;
+    }
+
+    /**
+     * Get attendingListPublic
+     *
+     * @return boolean 
+     */
+    public function getAttendingListPublic()
+    {
+        return $this->attendingListPublic;
     }
 }
