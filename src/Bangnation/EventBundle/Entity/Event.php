@@ -97,16 +97,46 @@ class Event implements Sluggable
     /**
      * @var \DateTime $startDate
      *
-     * @ORM\Column(name="start_date", type="datetime")
+     * @ORM\Column(name="start_date", type="date")
      */
     private $startDate;
 
     /**
      * @var \DateTime $endDate
      *
-     * @ORM\Column(name="end_date", type="datetime", nullable=true)
+     * @ORM\Column(name="end_date", type="date", nullable=true)
      */
     private $endDate;
+    
+    /**
+     * @var \DateTime $startTime
+     *
+     * @ORM\Column(name="start_time", type="time")
+     */
+    private $startTime;
+
+    /**
+     * @var \DateTime $endTime
+     *
+     * @ORM\Column(name="end_time", type="time", nullable=true)
+     */
+    private $endTme;
+    
+    /**
+     * @var string $frequency
+     *
+     * @ORM\Column(name="frequency", type="string", nullable=true)
+     * @Assert\Choice(choices = {"daily", "weekly", "biweekly", "monthly", "yearly", null}, message = "Choose a valid frequency.")
+     */
+    private $frequency;
+    
+    /**
+     * @var string $day
+     * 
+     * @ORM\Column(name="day", type="string", nullable=true)
+     * @Assert\Choice(choices = {"sun", "mon", "tue", "wed", "thu", "fri", "sat", null}, message = "Choose a valid day.")
+     */
+    private $day;
     
     /** 
      * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsAttending")
@@ -680,5 +710,97 @@ class Event implements Sluggable
     public function getAttendingListPublic()
     {
         return $this->attendingListPublic;
+    }
+
+    /**
+     * Set startTime
+     *
+     * @param \DateTime $startTime
+     * @return Event
+     */
+    public function setStartTime($startTime)
+    {
+        $this->startTime = $startTime;
+    
+        return $this;
+    }
+
+    /**
+     * Get startTime
+     *
+     * @return \DateTime 
+     */
+    public function getStartTime()
+    {
+        return $this->startTime;
+    }
+
+    /**
+     * Set endTme
+     *
+     * @param \DateTime $endTme
+     * @return Event
+     */
+    public function setEndTme($endTme)
+    {
+        $this->endTme = $endTme;
+    
+        return $this;
+    }
+
+    /**
+     * Get endTme
+     *
+     * @return \DateTime 
+     */
+    public function getEndTme()
+    {
+        return $this->endTme;
+    }
+
+    /**
+     * Set frequency
+     *
+     * @param string $frequency
+     * @return Event
+     */
+    public function setFrequency($frequency)
+    {
+        $this->frequency = $frequency;
+    
+        return $this;
+    }
+
+    /**
+     * Get frequency
+     *
+     * @return string 
+     */
+    public function getFrequency()
+    {
+        return $this->frequency;
+    }
+
+    /**
+     * Set day
+     *
+     * @param string $day
+     * @return Event
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+    
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return string 
+     */
+    public function getDay()
+    {
+        return $this->day;
     }
 }
