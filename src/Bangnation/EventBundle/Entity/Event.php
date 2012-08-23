@@ -382,10 +382,7 @@ class Event implements Sluggable
      */
     public function addAttendee(\Bangnation\UserBundle\Entity\User $attendees)
     {
-        // Can't be a decliner and an attendee so remove the user from the decliner list
-        if ($this->hasDecliner($attendees)) {
-            $this->removeDecliner($attendees);
-        }
+        $this->removeFromLists($attendees);
         
         $this->attendees[] = $attendees;
     
@@ -519,10 +516,7 @@ class Event implements Sluggable
      */
     public function addDecliner(\Bangnation\UserBundle\Entity\User $decliners)
     {
-        // Can't be a decliner and an attendee so remove the user from the attendee list
-        if ($this->hasAttendee($decliners)) {
-            $this->removeAttendee($decliners);
-        }
+        $this->removeFromLists($decliners);
         
         $this->decliners[] = $decliners;
     
@@ -568,6 +562,8 @@ class Event implements Sluggable
      */
     public function addMaybe(\Bangnation\UserBundle\Entity\User $maybes)
     {
+        $this->removeFromLists($maybes);
+       
         $this->maybes[] = $maybes;
     
         return $this;
@@ -591,5 +587,36 @@ class Event implements Sluggable
     public function getMaybes()
     {
         return $this->maybes;
+    }
+    
+    /**
+     * Is this user a maybe
+     * 
+     * @param \Bangnation\UserBundle\Entity\User $user
+     * @return boolean
+     */
+    public function hasMaybe(\Bangnation\UserBundle\Entity\User $user)
+    {
+        return $this->maybes->contains($user);
+    }
+    
+    /**
+     * Removes a user from all lists except invitees
+     * 
+     * @param \Bangnation\UserBundle\Entity\User $user
+     */
+    private function removeFromLists(\Bangnation\UserBundle\Entity\User $user)
+    {
+        if ($this->hasAttendee($user)) {
+            $this->removeAttendee($user);
+        }
+        
+        if ($this->hasDecliner($user)) {
+            $this->removeDecliner($user);
+        }
+        
+        if ($this->hasMaybe($user)) {
+            $this->removeMaybe($user);
+        }
     }
 }
