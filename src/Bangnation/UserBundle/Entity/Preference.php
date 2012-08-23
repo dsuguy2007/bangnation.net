@@ -38,6 +38,12 @@ class Preference
      */
     protected $turnOffUsers;
     
+    public function __construct()
+    {
+        $this->turnOnUsers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->turnOffUsers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     public function __toString()
     {
         return $this->getName();

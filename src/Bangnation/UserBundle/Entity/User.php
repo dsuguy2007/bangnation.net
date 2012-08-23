@@ -45,6 +45,16 @@ class User extends BaseUser
     protected $turnOffs;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="attendees")
+     */
+    protected $eventsAttending;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="hosts")
+     */
+    protected $eventsHosting;
+    
+    /**
      * The optional profile associated with this user.
      * 
      * @ORM\OneToOne(targetEntity="Profile", inversedBy="user", cascade={"persist", "remove"})
@@ -64,6 +74,11 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        
+        $this->turnOns = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->turnOffs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->incomingChats = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->outgoingChats = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -328,4 +343,70 @@ class User extends BaseUser
         return $this->timeZone;
     }
 
+
+    /**
+     * Add eventsAttending
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsAttending
+     * @return User
+     */
+    public function addEventsAttending(\Bangnation\EventBundle\Entity\Event $eventsAttending)
+    {
+        $this->eventsAttending[] = $eventsAttending;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eventsAttending
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsAttending
+     */
+    public function removeEventsAttending(\Bangnation\EventBundle\Entity\Event $eventsAttending)
+    {
+        $this->eventsAttending->removeElement($eventsAttending);
+    }
+
+    /**
+     * Get eventsAttending
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEventsAttending()
+    {
+        return $this->eventsAttending;
+    }
+
+    /**
+     * Add eventsHosting
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsHosting
+     * @return User
+     */
+    public function addEventsHosting(\Bangnation\EventBundle\Entity\Event $eventsHosting)
+    {
+        $this->eventsHosting[] = $eventsHosting;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eventsHosting
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsHosting
+     */
+    public function removeEventsHosting(\Bangnation\EventBundle\Entity\Event $eventsHosting)
+    {
+        $this->eventsHosting->removeElement($eventsHosting);
+    }
+
+    /**
+     * Get eventsHosting
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEventsHosting()
+    {
+        return $this->eventsHosting;
+    }
 }
