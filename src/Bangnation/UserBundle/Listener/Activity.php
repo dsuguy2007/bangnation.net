@@ -28,6 +28,13 @@ class Activity
      */
     public function onCoreController(FilterControllerEvent $event)
     {
+        // If you use partial controller like {% render %} you call 
+        // onCoreController each time and have many sql inserts. This avoids 
+        // that issue.
+        if ($event->getRequestType() !== \Symfony\Component\HttpKernel\HttpKernel::MASTER_REQUEST) {
+            return;
+        };
+
         if ($this->context->getToken()) {
             $user = $this->context->getToken()->getUser();
             if($user instanceof User)
