@@ -375,6 +375,11 @@ class Event implements Sluggable
      */
     public function addAttendee(\Bangnation\UserBundle\Entity\User $attendees)
     {
+        // Can't be a decliner and an attendee so remove the user from the decliner list
+        if ($this->hasDecliner($attendees)) {
+            $this->removeDecliner($attendees);
+        }
+        
         $this->attendees[] = $attendees;
     
         return $this;
@@ -400,6 +405,17 @@ class Event implements Sluggable
         return $this->attendees;
     }
 
+    /**
+     * Is this user an attendee
+     * 
+     * @param \Bangnation\UserBundle\Entity\User $user
+     * @return boolean
+     */
+    public function hasAttendee(\Bangnation\UserBundle\Entity\User $user)
+    {
+        return $this->attendees->contains($user);
+    }
+    
     /**
      * Add hosts
      *
@@ -478,6 +494,17 @@ class Event implements Sluggable
     }
 
     /**
+     * Is this user an invitee
+     * 
+     * @param \Bangnation\UserBundle\Entity\User $user
+     * @return boolean
+     */
+    public function hasInvitee(\Bangnation\UserBundle\Entity\User $user)
+    {
+        return $this->invitees->contains($user);
+    }
+
+    /**
      * Add decliners
      *
      * @param Bangnation\UserBundle\Entity\User $decliners
@@ -485,6 +512,11 @@ class Event implements Sluggable
      */
     public function addDecliner(\Bangnation\UserBundle\Entity\User $decliners)
     {
+        // Can't be a decliner and an attendee so remove the user from the attendee list
+        if ($this->hasAttendee($decliners)) {
+            $this->removeAttendee($decliners);
+        }
+        
         $this->decliners[] = $decliners;
     
         return $this;
@@ -508,5 +540,16 @@ class Event implements Sluggable
     public function getDecliners()
     {
         return $this->decliners;
+    }
+    
+    /**
+     * Is this user a decliner
+     * 
+     * @param \Bangnation\UserBundle\Entity\User $user
+     * @return boolean
+     */
+    public function hasDecliner(\Bangnation\UserBundle\Entity\User $user)
+    {
+        return $this->decliners->contains($user);
     }
 }
