@@ -75,6 +75,7 @@ class User extends BaseUser
     {
         parent::__construct();
         
+        $this->timeZone = 'UTC';
         $this->turnOns = new \Doctrine\Common\Collections\ArrayCollection();
         $this->turnOffs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->incomingChats = new \Doctrine\Common\Collections\ArrayCollection();
