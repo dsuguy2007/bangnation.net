@@ -26,7 +26,12 @@ class User extends BaseUser
      * @ORM\Column(name="last_activity", type="datetime", nullable=true)
      */
     protected $lastActivity;
-    
+        
+    /**
+     * @ORM\Column(name="timezone", type="string", length=255)
+     */
+    private $timeZone;
+
     /**
      * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\Preference", inversedBy="users")
      * @ORM\JoinTable(name="Users_TurnOns")
@@ -297,4 +302,30 @@ class User extends BaseUser
     {
         return $this->lastActivity;
     }
+    
+    /**
+     * Set timeZone
+     *
+     * @param string $timeZone
+     * @return User
+     */
+    public function setTimeZone($timeZone)
+    {
+        $this->timeZone = $timeZone;
+        return $this;
+    }
+
+    /**
+     * Get timeZone
+     *
+     * @return string 
+     */
+    public function getTimeZone()
+    {
+        if (empty($this->timeZone)) {
+            return 'UTC';
+        }
+        return $this->timeZone;
+    }
+
 }
