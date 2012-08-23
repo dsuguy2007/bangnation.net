@@ -60,6 +60,11 @@ class User extends BaseUser
     protected $eventsDeclined;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="maybes")
+     */
+    protected $eventsMaybe;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Bangnation\EventBundle\Entity\Event", mappedBy="hosts")
      */
     protected $eventsHosting;
@@ -92,7 +97,7 @@ class User extends BaseUser
         $this->outgoingChats = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsAttending = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsInvited = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->eventsInvited = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventsMaybe = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsHosting = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -489,5 +494,38 @@ class User extends BaseUser
     public function getEventsDeclined()
     {
         return $this->eventsDeclined;
+    }
+
+    /**
+     * Add eventsMaybe
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsMaybe
+     * @return User
+     */
+    public function addEventsMaybe(\Bangnation\EventBundle\Entity\Event $eventsMaybe)
+    {
+        $this->eventsMaybe[] = $eventsMaybe;
+    
+        return $this;
+    }
+
+    /**
+     * Remove eventsMaybe
+     *
+     * @param Bangnation\EventBundle\Entity\Event $eventsMaybe
+     */
+    public function removeEventsMaybe(\Bangnation\EventBundle\Entity\Event $eventsMaybe)
+    {
+        $this->eventsMaybe->removeElement($eventsMaybe);
+    }
+
+    /**
+     * Get eventsMaybe
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getEventsMaybe()
+    {
+        return $this->eventsMaybe;
     }
 }

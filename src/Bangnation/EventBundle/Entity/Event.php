@@ -113,6 +113,12 @@ class Event implements Sluggable
     private $decliners;
 
     /** 
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsMaybe")
+     * @ORM\JoinTable(name="Events_Maybes") 
+     */
+    private $maybes;
+
+    /** 
      * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="eventsHosting")
      * @ORM\JoinTable(name="Events_Hosts") 
      */
@@ -124,6 +130,7 @@ class Event implements Sluggable
         $this->attendees = new \Doctrine\Common\Collections\ArrayCollection();
         $this->invitees = new \Doctrine\Common\Collections\ArrayCollection();
         $this->decliners = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->maybes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->hosts = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -551,5 +558,38 @@ class Event implements Sluggable
     public function hasDecliner(\Bangnation\UserBundle\Entity\User $user)
     {
         return $this->decliners->contains($user);
+    }
+
+    /**
+     * Add maybes
+     *
+     * @param Bangnation\UserBundle\Entity\User $maybes
+     * @return Event
+     */
+    public function addMaybe(\Bangnation\UserBundle\Entity\User $maybes)
+    {
+        $this->maybes[] = $maybes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove maybes
+     *
+     * @param Bangnation\UserBundle\Entity\User $maybes
+     */
+    public function removeMaybe(\Bangnation\UserBundle\Entity\User $maybes)
+    {
+        $this->maybes->removeElement($maybes);
+    }
+
+    /**
+     * Get maybes
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMaybes()
+    {
+        return $this->maybes;
     }
 }
