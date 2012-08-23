@@ -167,6 +167,11 @@ class Event implements Sluggable
      * @ORM\JoinTable(name="Events_Hosts") 
      */
     private $hosts;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\EventBundle\Entity\Invitation", mappedBy="event")
+     */
+    private $invitations;
 
     public function __construct()
     {
@@ -178,6 +183,7 @@ class Event implements Sluggable
         $this->decliners = new \Doctrine\Common\Collections\ArrayCollection();
         $this->maybes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->hosts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -802,5 +808,38 @@ class Event implements Sluggable
     public function getDay()
     {
         return $this->day;
+    }
+
+    /**
+     * Add invitations
+     *
+     * @param Bangnation\EventBundle\Entity\Invitation $invitations
+     * @return Event
+     */
+    public function addInvitation(\Bangnation\EventBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations[] = $invitations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove invitations
+     *
+     * @param Bangnation\EventBundle\Entity\Invitation $invitations
+     */
+    public function removeInvitation(\Bangnation\EventBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations->removeElement($invitations);
+    }
+
+    /**
+     * Get invitations
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitations()
+    {
+        return $this->invitations;
     }
 }

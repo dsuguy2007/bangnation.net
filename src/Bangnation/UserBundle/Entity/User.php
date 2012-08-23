@@ -82,9 +82,14 @@ class User extends BaseUser
     private $incomingChats;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="sourceUser")
+     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="targetUser")
      */
     private $outgoingChats;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\EventBundle\Entity\Invitation", mappedBy="user")
+     */
+    private $invitations;
 
     public function __construct()
     {
@@ -99,6 +104,7 @@ class User extends BaseUser
         $this->eventsInvited = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsMaybe = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsHosting = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -527,5 +533,38 @@ class User extends BaseUser
     public function getEventsMaybe()
     {
         return $this->eventsMaybe;
+    }
+
+    /**
+     * Add invitations
+     *
+     * @param Bangnation\EventBundle\Entity\Invitation $invitations
+     * @return User
+     */
+    public function addInvitation(\Bangnation\EventBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations[] = $invitations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove invitations
+     *
+     * @param Bangnation\EventBundle\Entity\Invitation $invitations
+     */
+    public function removeInvitation(\Bangnation\EventBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations->removeElement($invitations);
+    }
+
+    /**
+     * Get invitations
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitations()
+    {
+        return $this->invitations;
     }
 }
