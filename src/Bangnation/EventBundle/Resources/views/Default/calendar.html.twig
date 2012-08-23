@@ -1,7 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
-<div class="row">
+<div class="row-fluid">
     <div class="span12">
         <link rel='stylesheet' type='text/css' href="/bundles/bangnationevent/css/fullcalendar/fullcalendar.css" />
         <link rel='stylesheet' type='text/css' href="/bundles/bangnationevent/css/fullcalendar/fullcalendar.print.css" media='print' />
@@ -17,26 +17,6 @@
             #calendar {
                 width: 940px;
                 margin: 0 auto;
-            }
-            
-            .event-hosting {
-                background-color: blue;
-                border-color: blue;
-            }
-
-            .event-invited {
-                background-color: lightgrey;
-                border-color: lightgray;
-            }
-
-            .event-declined {
-                background-color: lightcoral;
-                border-color: lightcoral;
-            }
-
-            .event-attending {
-                background-color: lightgreen;
-                border-color: lightgreen;
             }
         </style>
 
@@ -110,19 +90,17 @@
                                         start: "{{ event.startdate|date(null, app.user.timezone) }}",
                                         end: "{{ event.enddate|date(null, app.user.timezone) }}",
                                         allDay: false,
-                                        url: '{{ path('event', {'slug': event.slug}) }}',
+                                        url: '{{ path('event', {'slug': event.slug}) }}'
                                         {% if event.hasHost(app.user) %}
-                                        className: 'event-hosting',
-                                        color: 'blue'
+                                        ,color: 'blue'
                                         {% elseif event.hasAttendee(app.user) %}
-                                        className: 'event-attending',
-                                        color: 'green'
+                                        ,color: 'green'
                                         {% elseif event.hasInvitee(app.user) %}
-                                        className: 'event-invited',
-                                        color: 'grey'
+                                        ,color: 'grey'
                                         {% elseif event.hasDecliner(app.user) %}
-                                        className: 'event-declined',
-                                        color: 'lightcoral'
+                                        ,color: 'lightcoral'
+                                        {% elseif event.hasMaybe(app.user) %}
+                                        ,color: 'brown'
                                         {% endif %}
                                     }
                                     {% if not loop.last %},{% endif %}
