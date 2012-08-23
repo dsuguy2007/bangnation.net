@@ -206,6 +206,21 @@ class Profile
     private $user;
     
     /**
+     * The users who have viewed this profile
+     * 
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="viewed")
+     **/
+    private $viewers;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->viewers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -788,5 +803,38 @@ class Profile
     public function getUser()
     {
         return $this->user;
+    }
+    
+    /**
+     * Add viewers
+     *
+     * @param Bangnation\UserBundle\Entity\User $viewers
+     * @return Profile
+     */
+    public function addViewer(\Bangnation\UserBundle\Entity\User $viewers)
+    {
+        $this->viewers[] = $viewers;
+    
+        return $this;
+    }
+
+    /**
+     * Remove viewers
+     *
+     * @param Bangnation\UserBundle\Entity\User $viewers
+     */
+    public function removeViewer(\Bangnation\UserBundle\Entity\User $viewers)
+    {
+        $this->viewers->removeElement($viewers);
+    }
+
+    /**
+     * Get viewers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getViewers()
+    {
+        return $this->viewers;
     }
 }

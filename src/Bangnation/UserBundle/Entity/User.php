@@ -90,6 +90,14 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Bangnation\EventBundle\Entity\Invitation", mappedBy="user")
      */
     private $invitations;
+    
+    /**
+     * The users whos profile you have viewed
+     * 
+     * @ORM\ManyToMany(targetEntity="Profile", inversedBy="viewers")
+     * @ORM\JoinTable(name="Profile_Viewers")
+     **/
+    private $viewed;
 
     public function __construct()
     {
@@ -105,6 +113,7 @@ class User extends BaseUser
         $this->eventsMaybe = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eventsHosting = new \Doctrine\Common\Collections\ArrayCollection();
         $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->viewed = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -566,5 +575,38 @@ class User extends BaseUser
     public function getInvitations()
     {
         return $this->invitations;
+    }
+
+    /**
+     * Add viewed
+     *
+     * @param Bangnation\UserBundle\Entity\Profile $viewed
+     * @return User
+     */
+    public function addViewed(\Bangnation\UserBundle\Entity\Profile $viewed)
+    {
+        $this->viewed[] = $viewed;
+    
+        return $this;
+    }
+
+    /**
+     * Remove viewed
+     *
+     * @param Bangnation\UserBundle\Entity\Profile $viewed
+     */
+    public function removeViewed(\Bangnation\UserBundle\Entity\Profile $viewed)
+    {
+        $this->viewed->removeElement($viewed);
+    }
+
+    /**
+     * Get viewed
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getViewed()
+    {
+        return $this->viewed;
     }
 }
