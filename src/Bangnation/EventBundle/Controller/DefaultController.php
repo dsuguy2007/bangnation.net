@@ -32,4 +32,33 @@ class DefaultController extends Controller
         
         return array('event' => $event);
     }
+    
+    /**
+     * @Route("/event/calendar", name="event_calendar")
+     * @Template()
+     */
+    public function calendarAction() {        
+        $em = $this->getDoctrine()->getEntityManager();
+        $events = $em->getRepository('BangnationEventBundle:Event')->findAll();
+        
+        return array(
+            'events' => $events,
+        );
+    }
+    
+    /**
+     * @Route("/eventdetail", name="event_detail")
+     * @Template()
+     */
+    public function eventDetailAction() {
+        $id = $this->getRequest()->query->get('id');
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $event = $em->getRepository('BangnationEventBundle:Event')->find($id);
+        
+        return array(
+            'event' => $event, 
+        );
+    }
+
 }
