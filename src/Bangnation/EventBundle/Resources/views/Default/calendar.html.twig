@@ -18,6 +18,26 @@
                 width: 940px;
                 margin: 0 auto;
             }
+            
+            .event-hosting {
+                background-color: blue;
+                border-color: blue;
+            }
+
+            .event-invited {
+                background-color: lightgrey;
+                border-color: lightgray;
+            }
+
+            .event-declined {
+                background-color: lightcoral;
+                border-color: lightcoral;
+            }
+
+            .event-attending {
+                background-color: lightgreen;
+                border-color: lightgreen;
+            }
         </style>
 
         <div id='calendar'></div>
@@ -82,7 +102,7 @@
                                 });
                             },
                             events: 
-                                [
+                            [
                                 {% for event in events %}
                                     {
                                         id: "{{ event.id }}",
@@ -91,6 +111,19 @@
                                         end: "{{ event.enddate|date(null, app.user.timezone) }}",
                                         allDay: false,
                                         url: '{{ path('event', {'slug': event.slug}) }}',
+                                        {% if event.hasHost(app.user) %}
+                                        className: 'event-hosting',
+                                        color: 'blue'
+                                        {% elseif event.hasAttendee(app.user) %}
+                                        className: 'event-attending',
+                                        color: 'green'
+                                        {% elseif event.hasInvitee(app.user) %}
+                                        className: 'event-invited',
+                                        color: 'grey'
+                                        {% elseif event.hasDecliner(app.user) %}
+                                        className: 'event-declined',
+                                        color: 'lightcoral'
+                                        {% endif %}
                                     }
                                     {% if not loop.last %},{% endif %}
                                 {% endfor %}
