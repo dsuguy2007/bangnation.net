@@ -98,6 +98,16 @@ class User extends BaseUser
      * @ORM\JoinTable(name="Profile_Viewers")
      **/
     private $viewed;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\Friendship", mappedBy="user")
+     */
+    protected $friends;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\Friendship", mappedBy="friend")
+     */
+    protected $friendsWith;
 
     public function __construct()
     {
@@ -114,6 +124,8 @@ class User extends BaseUser
         $this->eventsHosting = new \Doctrine\Common\Collections\ArrayCollection();
         $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->viewed = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->friends = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->friendsWith = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -608,5 +620,71 @@ class User extends BaseUser
     public function getViewed()
     {
         return $this->viewed;
+    }
+
+    /**
+     * Add friends
+     *
+     * @param Bangnation\UserBundle\Entity\Friendship $friends
+     * @return User
+     */
+    public function addFriend(\Bangnation\UserBundle\Entity\Friendship $friends)
+    {
+        $this->friends[] = $friends;
+    
+        return $this;
+    }
+
+    /**
+     * Remove friends
+     *
+     * @param Bangnation\UserBundle\Entity\Friendship $friends
+     */
+    public function removeFriend(\Bangnation\UserBundle\Entity\Friendship $friends)
+    {
+        $this->friends->removeElement($friends);
+    }
+
+    /**
+     * Get friends
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFriends()
+    {
+        return $this->friends;
+    }
+
+    /**
+     * Add friendsWith
+     *
+     * @param Bangnation\UserBundle\Entity\Friendship $friendsWith
+     * @return User
+     */
+    public function addFriendsWith(\Bangnation\UserBundle\Entity\Friendship $friendsWith)
+    {
+        $this->friendsWith[] = $friendsWith;
+    
+        return $this;
+    }
+
+    /**
+     * Remove friendsWith
+     *
+     * @param Bangnation\UserBundle\Entity\Friendship $friendsWith
+     */
+    public function removeFriendsWith(\Bangnation\UserBundle\Entity\Friendship $friendsWith)
+    {
+        $this->friendsWith->removeElement($friendsWith);
+    }
+
+    /**
+     * Get friendsWith
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFriendsWith()
+    {
+        return $this->friendsWith;
     }
 }
