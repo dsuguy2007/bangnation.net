@@ -1,4 +1,4 @@
-{% extends 'MopaBootstrapBundle::base_initializr.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block head_style %}
 {{ parent() }}
@@ -11,48 +11,9 @@
 {% endstylesheets %}
 {% endblock head_style %}
 
-{% block navbar %}
-{% endblock navbar %}
-
-{% block headline %}{% endblock headline %}
-
-{% block footer %}
-<div class="row-fluid equal-heights">
-    <section class="span3 well box">
-        <header>
-            <h3>INFORMATION</h3>
-        </header>
-        <a href="{{ path('about') }}">About Us</a>
-        <br>
-        <a href="{{ path('terms') }}">Terms and Conditions</a>
-        <br>
-        <a href="{{ path('privacy') }}">Privacy Policy</a>
-    </section>
-    <section class="span3 well box">
-        <header>
-            <h3>CUSTOMER SERVICE</h3>
-        </header>
-        <a href="{{ path('contact') }}">Contact Us</a>
-    </section>
-    <section class="span6 well box">
-        <p>
-            All users must agree to our Membership Terms and Conditions,
-            Privacy Policy, Community Guidelines and User Agreement and in
-            so doing, contractually represent to us that they are at least
-            18 years of age, and that all images are posted by them with the
-            sole intention of meeting other men, and are of individuals that
-            are also over the age of 18.
-        </p>
-    </section>
-</div>
-<p>&copy; Bang Nation {{ '' | date('Y') }}</p>
-{% endblock footer %}
-
 {% block foot_script %}
     {{ parent() }}
     {% javascripts
-        '@BangnationCommonBundle/Resources/public/js/jquery.ticker.js'
-        '@BangnationCommonBundle/Resources/public/js/jquery.equalHeights.js'
         '@BangnationChatBundle/Resources/public/js/chat.js'
         '@BangnationCommonBundle/Resources/public/js/common.js'
     %}

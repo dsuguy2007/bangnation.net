@@ -1,111 +1,63 @@
-{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+{% extends 'MopaBootstrapBundle::base_initializr.html.twig' %}
 
-<!DOCTYPE html>
+{% block head_style %}
+{{ parent() }}
+{% stylesheets
+    '@BangnationCommonBundle/Resources/public/sass/mopabootstrapbundle.scss'
+    '@BangnationCommonBundle/Resources/public/css/ticker-style.css'
+%}
+<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+{% endblock head_style %}
 
-{% block html_tag %}
-<html>
-{% endblock html_tag %}
+{% block navbar %}
+{% endblock navbar %}
 
-{% block head %}
-<head>
-    <meta charset="UTF-8" />
-    {% block head_style %}
-    {% endblock head_style %}
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% block head_script %}
-    {# Overwrite this block to add your own js here, to get them generated into final files #}
-    {% endblock head_script %}
-
-    <title>{% block title %}Mopa Bootstrap Bundle{% endblock title %}</title>
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    {% block head_bottom %}
-    {% endblock head_bottom %}
-</head>
-{% endblock head %}
+{% block headline %}{% endblock headline %}
 
 {% block body_tag %}
-<body data-spy="scroll">
+<body>
 {% endblock body_tag %}
+        
+{% block footer %}
+<div class="row-fluid equal-heights">
+    <section class="span3 well box">
+        <header>
+            <h3>INFORMATION</h3>
+        </header>
+        <a href="{{ path('about') }}">About Us</a>
+        <br>
+        <a href="{{ path('terms') }}">Terms and Conditions</a>
+        <br>
+        <a href="{{ path('privacy') }}">Privacy Policy</a>
+    </section>
+    <section class="span3 well box">
+        <header>
+            <h3>CUSTOMER SERVICE</h3>
+        </header>
+        <a href="{{ path('contact') }}">Contact Us</a>
+    </section>
+    <section class="span6 well box">
+        <p>
+            All users must agree to our Membership Terms and Conditions,
+            Privacy Policy, Community Guidelines and User Agreement and in
+            so doing, contractually represent to us that they are at least
+            18 years of age, and that all images are posted by them with the
+            sole intention of meeting other men, and are of individuals that
+            are also over the age of 18.
+        </p>
+    </section>
+</div>
+<p>&copy; Bang Nation {{ '' | date('Y') }}</p>
+{% endblock footer %}
 
-{% block body_start %}
-{% endblock body_start %}
-
-{% block body %}
-    {% block navbar %}
-    {{ mopa_bootstrap_navbar('frontendNavbar') }}
-    {% endblock navbar %}
-
-    {% block container %}
-    <div class="{% block container_class %}container-fluid{% endblock container_class %}">
-        {% block header %}
-        {% endblock header %}
-
-        <div class="content">
-            {% block page_header %}
-            <div class="page-header">
-                  <h1>{% block headline %}Mopa Bootstrap Bundle{% endblock headline %}</h1>
-            </div>
-            {% endblock page_header %}
-
-            {% block flashes %}
-            {% if app.session.flashbag.peekAll|length > 0 %}
-            <div class="row-fluid">
-                <div class="span12">
-                {{ session_flash() }}
-                </div>
-            </div>
-            {% endif %}
-            {% endblock flashes %}
-
-            {% block content_row %}
-            <div class="row-fluid">
-                {% block content %}
-                <div class="span9">
-                    <strong>Hier könnte Ihre Werbung stehen ... </strong>
-                </div>
-                <div class="span3">
-                    {% block content_sidebar %}
-                    <h2>Sidebar</h2>
-                    {% endblock content_sidebar %}
-                </div>
-                {% endblock content %}
-            </div>
-            {% endblock content_row %}
-        </div>
-        <footer>
-            {% block footer %}
-            <p>&copy; <a href="http://www.mohrenweiserpartner.de" target="_blank">Mohrenweiser & Partner</a> 2011</p>
-            {% endblock footer %}
-        </footer>
-    </div> <!-- /container -->
-    {% endblock container %}
-    {% block foot_script %}
-    {# To only use a subset or add more js overwrite and copy paste this block
-    To speed up page loads save a copy of jQuery in your project and override this block to include the correct path
-    Otherwise the regeneration is done on every load in dev more with use_controller: true
-     #}
+{% block foot_script %}
+    {{ parent() }}
     {% javascripts
-        'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js'
-        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
-        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
-        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+        '@BangnationCommonBundle/Resources/public/js/jquery.equalHeights.js'
     %}
-<script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    {% endjavascripts %}
 {% endblock foot_script %}
-{% endblock body %}
-</body>
-</html>
