@@ -48,14 +48,14 @@ class Event implements Sluggable
     /**
      * @var boolean $inviteListPublic
      * 
-     * @ORM\Column(name="$inviteListPublic", type="boolean")
+     * @ORM\Column(name="invite_list_public", type="boolean")
      */
     private $inviteListPublic;
     
     /**
      * @var boolean $attendingListPublic
      * 
-     * @ORM\Column(name="$attendingListPublic", type="boolean")
+     * @ORM\Column(name="attending_list_public", type="boolean")
      */
     private $attendingListPublic;
     
