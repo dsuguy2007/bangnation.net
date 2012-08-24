@@ -77,17 +77,17 @@ class User extends BaseUser
     private $profile;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="targetUser")
+     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="targetUser", cascade={"persist", "remove"})
      */
     private $incomingChats;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="targetUser")
+     * @ORM\OneToMany(targetEntity="Bangnation\ChatBundle\Entity\Chat", mappedBy="targetUser", cascade={"persist", "remove"})
      */
     private $outgoingChats;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\EventBundle\Entity\Invitation", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Bangnation\EventBundle\Entity\Invitation", mappedBy="user", cascade={"persist", "remove"})
      */
     private $invitations;
     
@@ -100,14 +100,19 @@ class User extends BaseUser
     private $viewed;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\Friendship", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\Friendship", mappedBy="user", cascade={"persist", "remove"})
      */
     protected $friends;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\Friendship", mappedBy="friend")
+     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\Friendship", mappedBy="friend", cascade={"persist", "remove"})
      */
     protected $friendsWith;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\User", cascade={"persist", "remove"})
+     */
+    protected $bookmarkedProfiles;
 
     public function __construct()
     {
