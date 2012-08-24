@@ -199,3 +199,11 @@ services:
             # The alias is used to retrieve the navbar in templates
             - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
             
+    # Matcher for showing selected menu item for knp_menu
+    bangnation.voter.request:
+        class: Bangnation\CommonBundle\Voter\RequestVoter
+        arguments:
+            - @service_container
+        tags:
+            - { name: knp_menu.voter }
+            
