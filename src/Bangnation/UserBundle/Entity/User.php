@@ -131,6 +131,7 @@ class User extends BaseUser
         $this->viewed = new \Doctrine\Common\Collections\ArrayCollection();
         $this->friends = new \Doctrine\Common\Collections\ArrayCollection();
         $this->friendsWith = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bookmarkedProfiles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
