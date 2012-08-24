@@ -694,4 +694,37 @@ class User extends BaseUser
     {
         return $this->friendsWith;
     }
+
+    /**
+     * Add bookmarkedProfiles
+     *
+     * @param Bangnation\UserBundle\Entity\Profile $bookmarkedProfiles
+     * @return User
+     */
+    public function addBookmarkedProfile(\Bangnation\UserBundle\Entity\Profile $bookmarkedProfiles)
+    {
+        $this->bookmarkedProfiles[] = $bookmarkedProfiles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bookmarkedProfiles
+     *
+     * @param Bangnation\UserBundle\Entity\Profile $bookmarkedProfiles
+     */
+    public function removeBookmarkedProfile(\Bangnation\UserBundle\Entity\Profile $bookmarkedProfiles)
+    {
+        $this->bookmarkedProfiles->removeElement($bookmarkedProfiles);
+    }
+
+    /**
+     * Get bookmarkedProfiles
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getBookmarkedProfiles()
+    {
+        return $this->bookmarkedProfiles;
+    }
 }

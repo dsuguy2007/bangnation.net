@@ -224,6 +224,7 @@ class Profile
     public function __construct()
     {
         $this->viewers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bookmarkers = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -842,5 +843,38 @@ class Profile
     public function getViewers()
     {
         return $this->viewers;
+    }
+
+    /**
+     * Add bookmarkers
+     *
+     * @param Bangnation\UserBundle\Entity\User $bookmarkers
+     * @return Profile
+     */
+    public function addBookmarker(\Bangnation\UserBundle\Entity\User $bookmarkers)
+    {
+        $this->bookmarkers[] = $bookmarkers;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bookmarkers
+     *
+     * @param Bangnation\UserBundle\Entity\User $bookmarkers
+     */
+    public function removeBookmarker(\Bangnation\UserBundle\Entity\User $bookmarkers)
+    {
+        $this->bookmarkers->removeElement($bookmarkers);
+    }
+
+    /**
+     * Get bookmarkers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getBookmarkers()
+    {
+        return $this->bookmarkers;
     }
 }
