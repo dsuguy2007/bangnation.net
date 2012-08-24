@@ -125,6 +125,7 @@ mopa_bootstrap:
 #            wt: 'xxx'
             analytics: 'UA-34127518-1'
         diagnostic_mode: false
+    navbar: ~
     form:
         show_legend: false
         show_child_legend: false
@@ -161,3 +162,40 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: bangnation_user_profile }
+
+    mopa_bootstrap.menu_builder:
+        class: Bangnation\CommonBundle\Navbar\MenuBuilder
+        arguments: ["@knp_menu.factory", "@security.context"]
+
+    mopa_bootstrap.leftmenu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: mopa_bootstrap.menu_builder
+        factory_method: createMainMenu
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
+
+    mopa_bootstrap.rightmenu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: mopa_bootstrap.menu_builder
+        factory_method: createRightSideDropdownMenu
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: exampledropdown } # The alias is what is used to retrieve the menu
+            
+    mopa_bootstrap.navbar:
+        class: %mopa_bootstrap.navbar.generic%
+        arguments:
+            # first argument: a named array of menues:
+            - { leftmenu: @mopa_bootstrap.leftmenu=, rightmenu: @mopa_bootstrap.rightmenu= }
+            # second argument: a named array of FormType Classes  
+            #- { searchform: Combo\MainBundle\Form\SearchFormType }
+            - {}
+            # third argument: a named array of options
+            - { title: "Bang Nation", titleRoute: "welcome", fixedTop: true, isFluid: false }
+        tags:
+            # The alias is used to retrieve the navbar in templates
+            - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
+            
