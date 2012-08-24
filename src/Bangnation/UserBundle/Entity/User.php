@@ -95,7 +95,7 @@ class User extends BaseUser
      * The users whos profile you have viewed
      * 
      * @ORM\ManyToMany(targetEntity="Profile", inversedBy="viewers")
-     * @ORM\JoinTable(name="Profile_Viewers")
+     * @ORM\JoinTable(name="Profiles_Viewers")
      **/
     private $viewed;
     
@@ -110,7 +110,8 @@ class User extends BaseUser
     protected $friendsWith;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bangnation\UserBundle\Entity\User", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\Profile", inversedBy="bookmarkers", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="Profiles_Bookmarks")
      */
     protected $bookmarkedProfiles;
 

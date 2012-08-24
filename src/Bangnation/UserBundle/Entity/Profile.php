@@ -213,6 +213,12 @@ class Profile
     private $viewers;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Bangnation\UserBundle\Entity\User", mappedBy="bookmarkedProfiles")
+     * @ORM\JoinTable(name="Profile_Bookmark")
+     */
+    protected $bookmarkers;
+    
+    /**
      * Constructor
      */
     public function __construct()
