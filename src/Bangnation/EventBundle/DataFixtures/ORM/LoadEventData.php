@@ -14,6 +14,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
         $event->setName('Event name 1');
         $event->setDescription('Event description 1');
         $event->setStartDate(new \DateTime());
+        $event->setStartTime(new \DateTime());
         $event->addHost($manager->merge($this->getReference('user-super-admin')));
         $event->addInvitee($manager->merge($this->getReference('user-john')));
         $event->addInvitee($manager->merge($this->getReference('user-adam')));
@@ -28,6 +29,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
         $event->setName('Event name 2');
         $event->setDescription('Event description 2');
         $event->setStartDate(new \DateTime());
+        $event->setStartTime(new \DateTime());
         $event->addHost($manager->merge($this->getReference('user-adam')));
         $event->addAttendee($manager->merge($this->getReference('user-adam')));
         $event->addInvitee($manager->merge($this->getReference('user-super-admin')));
@@ -42,6 +44,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
         $event->setName('Event name 3');
         $event->setDescription('Event description 3');
         $event->setStartDate(new \DateTime());
+        $event->setStartTime(new \DateTime());
         $event->addHost($manager->merge($this->getReference('user-super-admin')));
         $event->addHost($manager->merge($this->getReference('user-john')));
         $event->addHost($manager->merge($this->getReference('user-adam')));
@@ -54,6 +57,7 @@ class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
         $event->setName('Event name 3');
         $event->setDescription('Event description 3 - Duplicate name');
         $event->setStartDate(new \DateTime());
+        $event->setStartTime(new \DateTime());
         $event->addHost($manager->merge($this->getReference('user-super-admin')));
         $event->addAttendee($manager->merge($this->getReference('user-super-admin')));
         $event->addAttendee($manager->merge($this->getReference('user-john')));
