@@ -18,6 +18,8 @@ class RegistrationFormType extends BaseType
                 'empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'),
                 'format' => 'yyyy-MMM-dd',                
             ))
+            ->add('city')
+            ->add('state')
         ; 
     }
 
