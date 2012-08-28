@@ -17,6 +17,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user->setPlainPassword('123');
         $user->setEnabled(true);
         $user->setBirthDate(new \DateTime('1980-01-01'));
+        $user->setCity('Seattle');
+        $user->setState('Washington');
         $user->addRole('ROLE_USER');
         $user->addRole('ROLE_USER_ADMIN');
         $user->addRole('ROLE_USER_SUPER_ADMIN');
@@ -31,6 +33,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user->setPlainPassword('123');
         $user->setEnabled(true);
         $user->setBirthDate(new \DateTime('1981-02-02'));
+        $user->setCity('Seattle');
+        $user->setState('Washington');
         $user->addRole('ROLE_USER');
 
         $user->addTurnOn($manager->merge($this->getReference('preference-0')));
@@ -50,6 +54,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user->setPlainPassword('123');
         $user->setEnabled(true);
         $user->setBirthDate(new \DateTime('1982-03-03'));
+        $user->setCity('Brooklyn');
+        $user->setState('New York');
         $user->addRole('ROLE_USER');
 
         $user->addTurnOn($manager->merge($this->getReference('preference-0')));
