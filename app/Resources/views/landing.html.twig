@@ -3,7 +3,6 @@
 {% block head_style %}
 {{ parent() }}
 {% stylesheets
-    '@BangnationCommonBundle/Resources/public/sass/mopabootstrapbundle.scss'
     '@BangnationCommonBundle/Resources/public/css/ticker-style.css'
 %}
 <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
@@ -21,10 +20,11 @@
     {{ parent() }}
     {% javascripts
         '@BangnationCommonBundle/Resources/public/js/jquery.ticker.js'
-        '@BangnationCommonBundle/Resources/public/js/common.js'
+        '@BangnationCommonBundle/Resources/public/js/landing.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
     {% endjavascripts %}
 {% endblock foot_script %}
