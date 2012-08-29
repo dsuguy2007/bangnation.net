@@ -1,1 +1,34 @@
-Hello {{ name }}!
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+Login <input type="text" id="jid">
+<br>
+Password <input type="password" id="pass">
+<br>
+<button id="connectBut">Connect</button>
+<button id="disconnectBut">Disconnect</button>
+<br>
+<div id="log">
+</div>
+<div id = "roster">
+        <select id="chatBox_status">
+                <option value="">Available</option>
+                <option value="dnd">Busy</option>
+                <option value="away">Away</option>
+        </select>
+        <input type="text" placeholder=" Search Contacts" id="chatBox_search">
+        <ul id="contacts">
+        </ul>
+</div>
+{% endblock %}
+
+{% block foot_script %}
+    {{ parent() }}
+    {% javascripts
+        '@BangnationChatBundle/Resources/public/js/jquery.xmpp.js'
+        '@BangnationChatBundle/Resources/public/js/xmpp.chat.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
