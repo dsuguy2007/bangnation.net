@@ -11,13 +11,20 @@
 
 {% block headline %}{% endblock headline %}
 
-{% block body_tag %}
-<body>
-{% endblock body_tag %}
+{% block body_tag %}<body>{% endblock body_tag %}
         
+{% block container_class %}container{% endblock %}
+
+{% block content_row %}
+<div class="row">
+    {% block content %}
+    {% endblock content %}
+</div>
+{% endblock content_row %}
+
 {% block footer %}
-<div class="row-fluid equal-heights">
-    <section class="span3 well box">
+<div class="row">
+    <section class="span3">
         <header>
             <h3>INFORMATION</h3>
         </header>
@@ -27,13 +34,13 @@
         <br>
         <a href="{{ path('privacy') }}">Privacy Policy</a>
     </section>
-    <section class="span3 well box">
+    <section class="span3">
         <header>
             <h3>CUSTOMER SERVICE</h3>
         </header>
         <a href="{{ path('contact') }}">Contact Us</a>
     </section>
-    <section class="span6 well box">
+    <section class="span6">
         <p>
             All users must agree to our Membership Terms and Conditions,
             Privacy Policy, Community Guidelines and User Agreement and in
@@ -50,6 +57,7 @@
 {% block foot_script %}
     {{ parent() }}
     {% javascripts
+        '@BangnationCommonBundle/Resources/public/js/bootstrap-typeahead.js'
         '@BangnationCommonBundle/Resources/public/js/jquery.equalHeights.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
