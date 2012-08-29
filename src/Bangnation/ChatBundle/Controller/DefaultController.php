@@ -10,6 +10,16 @@ use Bangnation\ChatBundle\Entity\Chat;
 
 class DefaultController extends Controller
 {
+    
+    /**
+     * @Route("/chat", name="chat", options={"expose"=true})
+     * @Template()
+     */
+    public function indexAction()
+    {
+        return array();
+    }
+    
     /**
      * @Route("/chat/heartbeat", name="chat_heartbeat", options={"expose"=true})
      * @Template()
