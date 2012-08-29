@@ -6,12 +6,51 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+
+    protected $client;
+    
+    protected function setUp()
     {
-        $client = static::createClient();
+        $this->client = static::createClient();
 
-        $crawler = $client->request('GET', '/hello/Fabien');
+        $this->client->followRedirects();
 
-        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
+        $crawler = $this->client->request('GET', '/login');
+        
+        $extract = $crawler->filter('input[name="_csrf_token"]')
+          ->extract(array('value'));
+        
+        $csrf_token = $extract[0];
+        
+        $form =$crawler->selectButton('_submit')->form();
+        $form['_username'] = 'super_admin';
+        $form['_password'] ='123';
+        $form['_csrf_token'] = $csrf_token;
+        
+        $crawler = $this->client->submit($form);
     }
+    
+    protected function tearDown()
+    {
+        $crawler = $this->client->request('GET', '/logout');
+    }
+    
+    public function testHeartbeat()
+    {
+        $crawler = $this->client->request(
+            'GET', 
+            '/chat/heartbeat',
+            array(),
+            array(),
+            array(
+                'CONTENT_TYPE' => 'application/json',
+                'HTTP_REFERER' => '/',
+            )
+        );
+        
+        $response = json_decode($crawler->text(), true);
+
+        $this->assertArrayHasKey('items', $response);
+    }
+
 }
