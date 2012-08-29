@@ -9,12 +9,53 @@
 {% endstylesheets %}
 {% endblock head_style %}
 
+{% block content_row %}
+<div class="row">
+    <div class="span2">
+        <img style="display: block; margin: auto;" src="{{ asset('bundles/bangnationcommon/images/logo.png') | imagine_filter('logo_small') }}" alt="" />
+    </div>
+    <div class="span10">
+        <h3>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span2">
+        <nav>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="nav-header">List header</li>
+                <li class="active"><a href="{{ path('welcome') }}"><i class="icon-white icon-home"></i> Home</a></li>
+                <li><a href="{{ path('events') }}">Events</a></li>
+                <li><a href="{{ path('event_calendar') }}">Event Calendar</a></li>
+                <li class="nav-header">Another list header</li>
+                <li><a href="{{ path('fos_user_profile_edit') }}"><i class="icon-edit"></i> Profile</a></li>
+                <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('fos_user_resetting_request') }}">Reset Password</a></li>
+                <li><a href="{{ path('fos_user_change_password') }}">Change Password</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h3>Chat Test</h3>
+            <a href="javascript:void(0)" onclick="javascript:chatWith('adam')">Chat With Adam</a>
+            <br>
+            <a href="javascript:void(0)" onclick="javascript:chatWith('john')">Chat With John</a>
+        </section>
+    </div>
+    {% block content %}
+    {% endblock content %}
+</div>
+{% endblock content_row %}
+
 {% block foot_script %}
     {{ parent() }}
     {% javascripts
         '@BangnationChatBundle/Resources/public/js/chat.js'
         '@BangnationCommonBundle/Resources/public/js/common.js'
     %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+<script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock foot_script %}
