@@ -6,14 +6,8 @@ $(function() {
             console.debug(request.status);
             if (request.status == '403') {
                 location.reload();
-            };
+            }
         }
     );
-        
-    $('#event-ticker').ticker();
-
-    $('.equal-heights').equalHeights();
-
-    $('.equal-widths').equalWidths();
 });
 
