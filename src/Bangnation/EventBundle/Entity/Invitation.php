@@ -74,10 +74,10 @@ class Invitation
     /**
      * Set event
      *
-     * @param Bangnation\UserBundle\Entity\Event $event
+     * @param Bangnation\EventBundle\Entity\Event $event
      * @return Invitation
      */
-    public function setEvent(\Bangnation\UserBundle\Entity\Event $event = null)
+    public function setEvent(\Bangnation\EventBundle\Entity\Event $event = null)
     {
         $this->event = $event;
     
@@ -87,7 +87,7 @@ class Invitation
     /**
      * Get event
      *
-     * @return Bangnation\UserBundle\Entity\Event 
+     * @return Bangnation\EventBundle\Entity\Event 
      */
     public function getEvent()
     {
