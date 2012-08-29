@@ -1,12 +1,18 @@
 /**
  * To support subnavbars we add a section padding top, so if you use inpage anchors wrap them in sections to have correct scrolling padding-top
  */
-$section-padding-top: 60px;
 
+$section-padding-top: 600px;
+/*
 $iconSpritePath: '/bundles/bangnationcommon/images/glyphicons-halflings.png';
 $iconWhiteSpritePath: '/bundles/bangnationcommon/images/glyphicons-halflings-white.png';
 
-$navbarHeight: 60px;
 
-/* @navbarBackground: grayLight; */
- 
+
+$navbarBackground: grayLight; 
+ */
+
+$navbarHeight: 120px;
+.navbar .nav { height: $navbarHeight; }
+.navbar .nav > li > a { padding: ($navbarHeight - 20)/2 10px (($navbarHeight - 20)/2 + 1); }
+.navbar .brand { padding: ((($navbarHeight - 20) / 2) * 0.8) 20px ((($navbarHeight - 20) / 2) * 1.2); }
