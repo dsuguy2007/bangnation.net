@@ -28,7 +28,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ MopaBootstrapBundle, BangnationEventBundle ]
+    bundles:        [ MopaBootstrapBundle, BangnationEventBundle, BangnationChatBundle ]
     #java: /usr/bin/java
     filters:
         sass:
