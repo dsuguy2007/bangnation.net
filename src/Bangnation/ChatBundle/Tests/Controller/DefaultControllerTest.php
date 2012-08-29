@@ -27,12 +27,12 @@ class DefaultControllerTest extends WebTestCase
         $form['_password'] ='123';
         $form['_csrf_token'] = $csrf_token;
         
-        $crawler = $this->client->submit($form);
+        $this->client->submit($form);
     }
     
     protected function tearDown()
     {
-        $crawler = $this->client->request('GET', '/logout');
+        $this->client->request('GET', '/logout');
     }
     
     public function testHeartbeat()
