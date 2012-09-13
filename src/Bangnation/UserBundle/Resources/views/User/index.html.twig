@@ -1,0 +1,14 @@
+{% block users %}
+<div class=".users">
+    <table class="table">
+        <tbody>
+            {% for user in entities %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td><a href="{{ path('friends_request', {'id': user.id}) }}" class="btn btn-small ajax-link" data-content=".users">Request</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock users %}
