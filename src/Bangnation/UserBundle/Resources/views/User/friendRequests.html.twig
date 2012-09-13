@@ -1,0 +1,16 @@
+{% block friend_requests %}
+<div class="friend-requests">
+    <table class="table">
+        <tbody>
+        {% for friend_request in friend_requests %}
+                <tr>
+                    <td>{{ friend_request.friend.username }}</td>
+                    <td>{{ friend_request.friendType }}</td>
+                    <td><a href="{{ path('friends_request_confirm', {'id': friend_request.id}) }}" class="btn btn-small ajax-link" data-content=".friend-requests">Confirm</a></td>
+                    <td><a href="{{ path('friends_request_decline', {'id': friend_request.id}) }}" class="btn btn-small ajax-link" data-content=".friend-requests">Decline</a></td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock friend_requests %}
