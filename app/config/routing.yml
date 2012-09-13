@@ -12,6 +12,11 @@ BangnationEventBundle:
     resource: "@BangnationEventBundle/Controller/"
     type:     annotation
     prefix:   /
+    
+BangnationUserBundle:
+    resource: "@BangnationUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 # Internal routing configuration to handle ESI
 #_internal:
