@@ -1,0 +1,11 @@
+{% block friends %}
+<table class="table table-bordered">
+    <tbody>
+        {% for friend in friends %}
+            <tr>
+                <td><a href="javascript:void(0)" onclick="javascript:chatWith('adam')">Chat With {{ friend.friend.username }}</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock friends %}
