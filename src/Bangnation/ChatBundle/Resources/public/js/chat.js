@@ -6,8 +6,8 @@ This script may be used for non-commercial purposes only. For any
 commercial purposes, please contact the author at 
 anant.garg@inscripts.com
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,E
+XPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
@@ -182,7 +182,7 @@ function chatHeartbeat(){
 	}
 	
 	$.ajax({
-	  url: "chat/heartbeat",
+                    url: Routing.generate('chat_heartbeat'),
 	  cache: false,
 	  dataType: "json",
 	  success: function(data) {
