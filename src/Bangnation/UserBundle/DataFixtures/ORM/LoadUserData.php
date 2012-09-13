@@ -1,11 +1,10 @@
 <?php
-namespace Combo\BrandBundle\DataFixtures\ORM;
+namespace Bangnation\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Bangnation\UserBundle\Entity\User;
-use Bangnation\UserBundle\Entity\Preference;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -69,6 +68,41 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
         $manager->persist($user);
         
+        $user = new User();
+        $user->setEmail('mike@bangnation.net');
+        $user->setUsername('mike');
+        $user->setPlainPassword('123');
+        $user->setEnabled(true);
+        $user->setBirthDate(new \DateTime('1982-06-06'));
+        $user->setCity('Los Angeles');
+        $user->setState('California');
+        $user->addRole('ROLE_USER');
+
+        $user->addTurnOn($manager->merge($this->getReference('preference-0')));
+        $user->addTurnOff($manager->merge($this->getReference('preference-4')));
+
+        $this->addReference("user-mike", $user);
+
+        $manager->persist($user);        
+        
+        $user = new User();
+        $user->setEmail('dave@bangnation.net');
+        $user->setUsername('dave');
+        $user->setPlainPassword('123');
+        $user->setEnabled(true);
+        $user->setBirthDate(new \DateTime('1988-06-06'));
+        $user->setCity('Seattle');
+        $user->setState('Washington');
+        $user->addRole('ROLE_USER');
+
+        $user->addTurnOn($manager->merge($this->getReference('preference-0')));
+        
+        $user->addTurnOff($manager->merge($this->getReference('preference-4')));
+
+        $this->addReference("user-dave", $user);
+
+        $manager->persist($user);
+
         $manager->flush();        
     }
     

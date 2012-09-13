@@ -1,5 +1,5 @@
 <?php
-namespace Combo\BrandBundle\DataFixtures\ORM;
+namespace Bangnation\PreferenceBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
