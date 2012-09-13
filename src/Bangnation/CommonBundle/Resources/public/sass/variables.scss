@@ -3,14 +3,11 @@
  */
 
 $section-padding-top: 600px;
+$iconSpritePath: url('/bundles/bangnationcommon/images/glyphicons-halflings.png');
+$iconWhiteSpritePath: url('/bundles/bangnationcommon/images/glyphicons-halflings-white.png');
 /*
-$iconSpritePath: '/bundles/bangnationcommon/images/glyphicons-halflings.png';
-$iconWhiteSpritePath: '/bundles/bangnationcommon/images/glyphicons-halflings-white.png';
-
-
-
 $navbarBackground: grayLight; 
- */
+*/
 
 $navbarHeight: 120px;
 .navbar .nav { height: $navbarHeight; }
