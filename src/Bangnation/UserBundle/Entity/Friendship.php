@@ -4,6 +4,7 @@ namespace Bangnation\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Bangnation\UserBundle\Entity\Friendship
@@ -25,7 +26,8 @@ class Friendship
     /**
      * @var \DateTime $requested
      * 
-     * @ORM\Column(name="requested", type="datetime", nullable=true)
+     * @ORM\Column(name="requested", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $requested;
     
@@ -39,7 +41,7 @@ class Friendship
     /**
      * @var string $friendType
      * 
-     * @ORM\Column(name="friend_type", type="string", length=255, nullable=true)
+     * @ORM\Column(name="friend_type", type="string", length=255)
      * @Assert\Choice(choices = {"plays together only", "monogamously coupled", "separate only", "together or separately", "friends only", "fuckbuddies only", "friends/fuckbuddies", null}, message = "Choose a valid privacy.")
      */
     private $friendType;
@@ -48,12 +50,30 @@ class Friendship
      * @ORM\ManyToOne(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="friends")
      */
     private $user;
+    
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+    private $user_id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Bangnation\UserBundle\Entity\User", inversedBy="friendsWith")
      */
     private $friend;
+    
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="friend_id", type="integer")
+     */
+    private $friend_id;
+   
+    public function __construct()
+    {
 
+    }
     /**
      * Get id
      *
@@ -223,5 +243,51 @@ class Friendship
     public function getFriend()
     {
         return $this->friend;
+    }
+
+    /**
+     * Set user_id
+     *
+     * @param integer $userId
+     * @return Friendship
+     */
+    public function setUserId($userId)
+    {
+        $this->user_id = $userId;
+    
+        return $this;
+    }
+
+    /**
+     * Get user_id
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * Set friend_id
+     *
+     * @param integer $friendId
+     * @return Friendship
+     */
+    public function setFriendId($friendId)
+    {
+        $this->friend_id = $friendId;
+    
+        return $this;
+    }
+
+    /**
+     * Get friend_id
+     *
+     * @return integer 
+     */
+    public function getFriendId()
+    {
+        return $this->friend_id;
     }
 }
