@@ -32,6 +32,22 @@ class Friendship
     private $requested;
     
     /**
+     *
+     * @var string $requestMessage
+     * 
+     * @ORM\Column(name="request_message", type="string", length=255)
+     */
+    private $requestMessage;
+    
+    /**
+     *
+     * @var string $replyMessage
+     * 
+     * @ORM\Column(name="reply_message", type="string", length=255)
+     */
+    private $replyMessage;
+    
+    /**
      * @var \DateTime $accepted
      * 
      * @ORM\Column(name="accepted", type="datetime", nullable=true)
@@ -289,5 +305,51 @@ class Friendship
     public function getFriendId()
     {
         return $this->friend_id;
+    }
+
+    /**
+     * Set requestMessage
+     *
+     * @param string $requestMessage
+     * @return Friendship
+     */
+    public function setRequestMessage($requestMessage)
+    {
+        $this->requestMessage = $requestMessage;
+    
+        return $this;
+    }
+
+    /**
+     * Get requestMessage
+     *
+     * @return string 
+     */
+    public function getRequestMessage()
+    {
+        return $this->requestMessage;
+    }
+
+    /**
+     * Set replyMessage
+     *
+     * @param string $replyMessage
+     * @return Friendship
+     */
+    public function setReplyMessage($replyMessage)
+    {
+        $this->replyMessage = $replyMessage;
+    
+        return $this;
+    }
+
+    /**
+     * Get replyMessage
+     *
+     * @return string 
+     */
+    public function getReplyMessage()
+    {
+        return $this->replyMessage;
     }
 }
