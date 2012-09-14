@@ -22,6 +22,27 @@ body {
   border: 0;
 }
 
+.bn-footer {
+    background-color: $navbarBackground;
+    
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(transparent));
+    background-image: -webkit-linear-gradient(#000, transparent);
+    background-image: -moz-linear-gradient(#000, transparent), -moz-linear-gradient(#000, transparent);
+    background-image: -o-linear-gradient(#000, transparent), -o-linear-gradient(#000, transparent);
+    background-image: linear-gradient(#000, transparent), linear-gradient(#000, transparent);
+    
+    -moz-background-size: 100% 9px;
+    background-size: 100% 9px;
+    background-position: 0 0, 0 0;
+    background-repeat: no-repeat;
+    
+    padding-top: 9px;
+    padding-bottom: 9px;
+    >p {
+      text-align: center; /* center align it with the container */
+    }
+}
+
 /* For collection of email, make them display block */
 /*
 .collection {
