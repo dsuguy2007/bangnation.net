@@ -12,46 +12,56 @@
 {% block headline %}{% endblock headline %}
 
 {% block body_tag %}<body>{% endblock body_tag %}
-        
+
 {% block container_class %}container{% endblock %}
 
 {% block content_row %}
-<div class="row">
+    <div class="row">
     {% block content %}
     {% endblock content %}
-</div>
+        </div>
 {% endblock content_row %}
 
+{%block container %}
+    {{ parent() }}
+        <div class="bn-footer">
+            <div class="container">
+                <div class="content">
+                    <div class="row">
+                        <section class="span3">
+                            <header>
+                                <h3>INFORMATION</h3>
+                            </header>
+                            <a href="{{ path('about') }}">About Us</a>
+                            <br>
+                            <a href="{{ path('terms') }}">Terms and Conditions</a>
+                            <br>
+                            <a href="{{ path('privacy') }}">Privacy Policy</a>
+                        </section>
+                        <section class="span3">
+                            <header>
+                                <h3>CUSTOMER SERVICE</h3>
+                            </header>
+                            <a href="{{ path('contact') }}">Contact Us</a>
+                        </section>
+                        <section class="span6">
+                            <p>
+                                All users must agree to our Membership Terms and Conditions,
+                                Privacy Policy, Community Guidelines and User Agreement and in
+                                so doing, contractually represent to us that they are at least
+                                18 years of age, and that all images are posted by them with the
+                                sole intention of meeting other men, and are of individuals that
+                                are also over the age of 18.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; Bang Nation {{ '' | date('Y') }}</p>
+        </div>
+{% endblock %}
+
 {% block footer %}
-<div class="row">
-    <section class="span3">
-        <header>
-            <h3>INFORMATION</h3>
-        </header>
-        <a href="{{ path('about') }}">About Us</a>
-        <br>
-        <a href="{{ path('terms') }}">Terms and Conditions</a>
-        <br>
-        <a href="{{ path('privacy') }}">Privacy Policy</a>
-    </section>
-    <section class="span3">
-        <header>
-            <h3>CUSTOMER SERVICE</h3>
-        </header>
-        <a href="{{ path('contact') }}">Contact Us</a>
-    </section>
-    <section class="span6">
-        <p>
-            All users must agree to our Membership Terms and Conditions,
-            Privacy Policy, Community Guidelines and User Agreement and in
-            so doing, contractually represent to us that they are at least
-            18 years of age, and that all images are posted by them with the
-            sole intention of meeting other men, and are of individuals that
-            are also over the age of 18.
-        </p>
-    </section>
-</div>
-<p>&copy; Bang Nation {{ '' | date('Y') }}</p>
 {% endblock footer %}
 
 {% block foot_script %}
@@ -60,8 +70,8 @@
         '@BangnationCommonBundle/Resources/public/js/bootstrap-typeahead.js'
         '@BangnationCommonBundle/Resources/public/js/jquery.equalHeights.js'
     %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-    <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     {% endjavascripts %}
 {% endblock foot_script %}
